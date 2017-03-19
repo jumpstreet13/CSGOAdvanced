@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.asuper.abocha.cs_go.R;
@@ -13,15 +15,16 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
 
     private List<Map> mapList;
-    private Context mContext;
+    private MapClickListener listener;
 
-    public MapAdapter(Context context, List<Map> mapList){
+    public MapAdapter(List<Map> mapList, MapClickListener listener){
         this.mapList = mapList;
-        this.mContext = context;
+        this.listener = listener;
     }
 
 
@@ -35,7 +38,7 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
     @Override
     public void onBindViewHolder(MapHolder holder, int position) {
         Map map = mapList.get(position);
-        holder.bindView(map, mContext);
+        holder.bindView(map,listener);
     }
 
     @Override
@@ -43,28 +46,39 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
         return mapList.size();
     }
 
+    public interface MapClickListener{
+        void onMapClick();
+    }
+
 
     static class MapHolder extends RecyclerView.ViewHolder{
 
-        //@BindView(R.id.textview_in_card_map_list) TextView textView;
-       // @BindView(R.id.imageview_in_card_map_list) ImageView imageView;
-        TextView textView;
-        ImageView imageView;
+        Animation mAnimation;
+        MapClickListener listener;
+        @BindView(R.id.textview_in_card_map_list) TextView textView;
+        @BindView(R.id.imageview_in_card_map_list) ImageView imageView;
+
+        @OnClick(R.id.cardview_in_map_list)
+        void onClick(){
+            // TODO: 18.03.2017 Перенести процесс анимации в активити, а также сделать анимацию по z оси
+          //  mAnimation = AnimationUtils.loadAnimation(imageView.getContext(), R.anim.shake_card);
+          //  imageView.startAnimation(mAnimation);
+            listener.onMapClick();
+        }
 
         public MapHolder(View itemView) {
             super(itemView);
-             textView = (TextView) itemView.findViewById(R.id.textview_in_card_map_list);
-            imageView = (ImageView) itemView.findViewById(R.id.imageview_in_card_map_list);
             ButterKnife.bind(this, itemView);
         }
 
-        void bindView(Map map, Context context){
+        void bindView(Map map, MapClickListener listener){
             textView.setText(map.getShortDescription());
-            Glide.with(context)
+            Glide.with(imageView.getContext())
                     .load(map.getImage())
-                    .override(800, 600)
                     .centerCrop()
+                    .override(1200,800)
                     .into(imageView);
+            this.listener = listener;
         }
     }
 

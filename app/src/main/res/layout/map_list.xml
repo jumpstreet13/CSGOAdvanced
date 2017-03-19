@@ -12,6 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <android.support.v7.widget.CardView
+        android:id="@+id/cardview_in_map_list"
+        android:background="@drawable/translate_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardCornerRadius="2dp"
@@ -40,10 +42,5 @@
 
     </android.support.v7.widget.CardView>
 
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/transparent_button"/>
     </FrameLayout>
 </LinearLayout>

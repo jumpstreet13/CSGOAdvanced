@@ -2,11 +2,15 @@ package com.asuper.abocha.cs_go.Map;
 
 import android.media.Image;
 import android.os.Bundle;
+import android.provider.ContactsContract;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.asuper.abocha.cs_go.BaseActivity;
 import com.asuper.abocha.cs_go.Model.Map;
@@ -20,19 +24,20 @@ import java.util.Random;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MapActivity extends BaseActivity implements MapView {
+import static android.support.design.widget.Snackbar.LENGTH_SHORT;
 
-    //@BindView(R.id.recyclerView) RecyclerView mRecyclerView;
-    private Toolbar toolbar;
-    private ImageView mImageView;
+public class MapActivity extends BaseActivity implements MapView, MapAdapter.MapClickListener {
+
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+    @BindView(R.id.image_collapse) ImageView mImageView;
+    @BindView(R.id.toolbar_in_map_activity) Toolbar toolbar;
+    @BindView(R.id.activity_map_coordinator_layout) CoordinatorLayout mCoordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        //ButterKnife.bind(this);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_in_map_activity);
-        mImageView = (ImageView) findViewById(R.id.image_collapse);
+        ButterKnife.bind(this);
         setupToolbar();
         Glide.with(this)
                 .load(R.drawable.main)
@@ -46,16 +51,18 @@ public class MapActivity extends BaseActivity implements MapView {
         arrayList.add(map);
         arrayList.add(map2);
         arrayList.add(map3);
-        MapAdapter adapter = new MapAdapter(this, arrayList);
+        MapAdapter adapter = new MapAdapter(arrayList, this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(adapter);
     }
 
-    Random mRandom = new Random();
-
-
 
     public void setupToolbar(){
         setSupportActionBar(toolbar);
+    }
+
+    @Override
+    public void onMapClick() {
+        Snackbar.make(mCoordinatorLayout, "you tapped me!", LENGTH_SHORT).show();
     }
 }
