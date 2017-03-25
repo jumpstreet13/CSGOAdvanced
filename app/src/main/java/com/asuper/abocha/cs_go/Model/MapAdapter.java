@@ -47,7 +47,7 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
     }
 
     public interface MapClickListener{
-        void onMapClick();
+        void onMapClick(ImageView imageView);
     }
 
 
@@ -63,7 +63,7 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
             // TODO: 18.03.2017 Перенести процесс анимации в активити, а также сделать анимацию по z оси
           //  mAnimation = AnimationUtils.loadAnimation(imageView.getContext(), R.anim.shake_card);
           //  imageView.startAnimation(mAnimation);
-            listener.onMapClick();
+            listener.onMapClick(imageView);
         }
 
         public MapHolder(View itemView) {
