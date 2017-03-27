@@ -16,6 +16,8 @@ import com.asuper.abocha.cs_go.Model.Map;
 import com.asuper.abocha.cs_go.R;
 import com.bumptech.glide.Glide;
 import java.util.List;
+import java.util.function.ToDoubleBiFunction;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -68,6 +70,7 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
           //  mAnimation = AnimationUtils.loadAnimation(imageView.getContext(), R.anim.resize_card);
           //  imageView.startAnimation(mAnimation);
             // TODO: 27.03.17 Animation to center
+            // TODO: 27.03.17 Animation from center 
             /*ResizeAnimation resizeAnimation = new ResizeAnimation(imageView, imageView.getWidth()/2, imageView.getHeight()/2);
             imageView.startAnimation(resizeAnimation);*/
             Animation animation = AnimationUtils.loadAnimation(imageView.getContext(), R.anim.resize_card);
