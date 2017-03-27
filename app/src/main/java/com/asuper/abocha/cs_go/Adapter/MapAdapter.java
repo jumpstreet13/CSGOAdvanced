@@ -1,7 +1,7 @@
-package com.asuper.abocha.cs_go.Model;
+package com.asuper.abocha.cs_go.Adapter;
 
 
-import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +10,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.asuper.abocha.cs_go.Animations.ResizeAnimation;
+import com.asuper.abocha.cs_go.Model.Map;
 import com.asuper.abocha.cs_go.R;
 import com.bumptech.glide.Glide;
 import java.util.List;
@@ -55,14 +58,20 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
 
         Animation mAnimation;
         MapClickListener listener;
+        @BindView(R.id.cardview_in_map_list) CardView mCardView;
         @BindView(R.id.textview_in_card_map_list) TextView textView;
         @BindView(R.id.imageview_in_card_map_list) ImageView imageView;
 
         @OnClick(R.id.cardview_in_map_list)
         void onClick(){
             // TODO: 18.03.2017 Перенести процесс анимации в активити, а также сделать анимацию по z оси
-          //  mAnimation = AnimationUtils.loadAnimation(imageView.getContext(), R.anim.shake_card);
+          //  mAnimation = AnimationUtils.loadAnimation(imageView.getContext(), R.anim.resize_card);
           //  imageView.startAnimation(mAnimation);
+            // TODO: 27.03.17 Animation to center
+            /*ResizeAnimation resizeAnimation = new ResizeAnimation(imageView, imageView.getWidth()/2, imageView.getHeight()/2);
+            imageView.startAnimation(resizeAnimation);*/
+            Animation animation = AnimationUtils.loadAnimation(imageView.getContext(), R.anim.resize_card);
+            imageView.startAnimation(animation);
             listener.onMapClick(imageView);
         }
 

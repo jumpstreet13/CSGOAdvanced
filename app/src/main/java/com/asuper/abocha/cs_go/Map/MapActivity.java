@@ -1,28 +1,22 @@
 package com.asuper.abocha.cs_go.Map;
 
-import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.asuper.abocha.cs_go.BaseActivity;
 import com.asuper.abocha.cs_go.MapDetail.MapDetail;
 import com.asuper.abocha.cs_go.Model.Map;
-import com.asuper.abocha.cs_go.Model.MapAdapter;
+import com.asuper.abocha.cs_go.Adapter.MapAdapter;
 import com.asuper.abocha.cs_go.R;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

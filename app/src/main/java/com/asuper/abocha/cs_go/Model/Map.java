@@ -3,9 +3,9 @@ package com.asuper.abocha.cs_go.Model;
 
 public class Map {
 
-    String shortDescription;
-    String longDescription;
-    int image;
+   private String shortDescription;
+   private String longDescription;
+   private int image;
 
     public Map(String shortDescription, String longDescription, int image) {
         this.shortDescription = shortDescription;
