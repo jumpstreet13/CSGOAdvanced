@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.asuper.abocha.cs_go.Adapter.GalleryAdapter;
 import com.asuper.abocha.cs_go.BaseActivity;
 import com.asuper.abocha.cs_go.R;
 import com.bumptech.glide.Glide;
@@ -11,7 +12,7 @@ import com.bumptech.glide.Glide;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MapDetail extends BaseActivity {
+public class MapDetail extends BaseActivity implements GalleryAdapter.GalleryClickListener {
 
     @BindView(R.id.image_collapse) ImageView mapImage;
 
@@ -27,4 +28,8 @@ public class MapDetail extends BaseActivity {
 
     }
 
+    @Override
+    public void onGalleryItemClick(ImageView imageView) {
+
+    }
 }

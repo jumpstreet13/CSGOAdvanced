@@ -16,7 +16,6 @@ import com.asuper.abocha.cs_go.Model.Map;
 import com.asuper.abocha.cs_go.R;
 import com.bumptech.glide.Glide;
 import java.util.List;
-import java.util.function.ToDoubleBiFunction;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -65,7 +64,7 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
         @BindView(R.id.imageview_in_card_map_list) ImageView imageView;
 
         @OnClick(R.id.cardview_in_map_list)
-        void onClick(){
+        void onItemClick(){
             // TODO: 18.03.2017 Перенести процесс анимации в активити, а также сделать анимацию по z оси
           //  mAnimation = AnimationUtils.loadAnimation(imageView.getContext(), R.anim.resize_card);
           //  imageView.startAnimation(mAnimation);

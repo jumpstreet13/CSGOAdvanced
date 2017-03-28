@@ -9,6 +9,7 @@
     tools:context="com.asuper.abocha.cs_go.Map.MapActivity">
 
     <android.support.design.widget.AppBarLayout
+        style="@style/AppBarDetail"
         android:id="@+id/app_bar_in_map_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,10 +42,25 @@
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+
+        </HorizontalScrollView>
+
+
     </android.support.design.widget.AppBarLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+
 
 </android.support.design.widget.CoordinatorLayout>

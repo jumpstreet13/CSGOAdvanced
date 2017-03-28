@@ -1,17 +1,22 @@
 package com.asuper.abocha.cs_go.Model;
 
 
+import java.util.List;
+
 public class Map {
 
    private String shortDescription;
    private String longDescription;
    private int image;
+   private List<Integer> advantages;
 
-    public Map(String shortDescription, String longDescription, int image) {
+    public Map(String shortDescription, String longDescription, int image, List<Integer> advantages) {
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         this.image = image;
+        this.advantages = advantages;
     }
+
 
     public String getShortDescription() {
         return shortDescription;
@@ -35,5 +40,13 @@ public class Map {
 
     public void setImage(int image) {
         this.image = image;
+    }
+
+    public List<Integer> getAdvantages() {
+        return advantages;
+    }
+
+    public void setAdvantages(List<Integer> advantages) {
+        this.advantages = advantages;
     }
 }
