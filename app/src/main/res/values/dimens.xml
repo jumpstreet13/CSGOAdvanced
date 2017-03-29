@@ -6,4 +6,13 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+    <dimen name="padding_between_cards">8dp</dimen>
+    <dimen name="margin_bottom_between_cards">16dp</dimen>
+    <dimen name="margin_sides_between_cards">8dp</dimen>
+
+
+    <!--text sizes-->
+    <dimen name="small_size_of_text">12sp</dimen>
+    <dimen name="middle_size_of_text">16sp</dimen>
+    <dimen name="big_size_of_text">20sp</dimen>
 </resources>

@@ -51,6 +51,8 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
         MapAdapter adapter = new MapAdapter(arrayList, this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // TODO: 29.03.17 GridLayoutManager
         mRecyclerView.setAdapter(adapter);
+        // TODO: 29.03.17 Make transluent actionBar
+        // TODO: 29.03.17 Make normal margin between collapsing toolbar and content 
     }
 
 

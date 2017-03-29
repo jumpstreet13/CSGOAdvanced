@@ -4,10 +4,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.asuper.abocha.cs_go.Adapter.GalleryAdapter;
 import com.asuper.abocha.cs_go.BaseActivity;
+import com.asuper.abocha.cs_go.GalleryBigDetail.GalleryBigDetail;
 import com.asuper.abocha.cs_go.R;
 import com.bumptech.glide.Glide;
 
@@ -32,6 +35,8 @@ public class MapDetail extends BaseActivity implements GalleryAdapter.GalleryCli
                 .load(R.drawable.de_inferno)
                 .centerCrop()
                 .into(mapImage);
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.resize_imageview_from_small_to_big); // TODO: 29.03.17 Make animation method in BaseActivity
+        mapImage.startAnimation(animation);
         List<Integer> mockList = new ArrayList<>();
         mockList.add(R.drawable.de_cache);
         mockList.add(R.drawable.de_nuke);
@@ -48,6 +53,6 @@ public class MapDetail extends BaseActivity implements GalleryAdapter.GalleryCli
 
     @Override
     public void onGalleryItemClick(ImageView imageView) {
-
+        start(GalleryBigDetail.class);
     }
 }
