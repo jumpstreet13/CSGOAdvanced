@@ -26,11 +26,11 @@ import butterknife.OnClick;
 
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryHolder> {
 
-    private List<Map> mapList;
-    private MapAdapter.MapClickListener listener;
+    private List<Integer> mapView;
+    private GalleryClickListener listener;
 
-    public GalleryAdapter(List<Map> mapList, MapAdapter.MapClickListener listener){
-        this.mapList = mapList;
+    public GalleryAdapter(List<Integer> mapView, GalleryClickListener listener){
+        this.mapView = mapView;
         this.listener = listener;
     }
 
@@ -38,19 +38,19 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryH
     @Override
     public GalleryHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.map_list, parent, false);
+        View view = layoutInflater.inflate(R.layout.gallery_list, parent, false);
         return  new GalleryHolder(view);
     }
 
     @Override
     public void onBindViewHolder(GalleryHolder holder, int position) {
-        Map map = mapList.get(position);
-        holder.bindView(map,listener);
+        Integer nextImage = mapView.get(position);
+        holder.bindView(nextImage,listener);
     }
 
     @Override
     public int getItemCount() {
-        return mapList.size();
+        return mapView.size();
     }
 
     public interface GalleryClickListener{
@@ -61,10 +61,10 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryH
     static class GalleryHolder extends RecyclerView.ViewHolder{
 
         Animation mAnimation;
-        MapAdapter.MapClickListener listener;
+        GalleryClickListener listener;
         @BindView(R.id.imageview_in_card_gallery_list) ImageView imageView;
 
-        @OnClick(R.id.cardview_in_map_list)
+        @OnClick(R.id.cardview_in_gallery_list)
         void onGalleryItemClick(){
             // TODO: 28.03.17 Creating activity with transparent black background and show the image in the big size
         }
@@ -74,11 +74,11 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryH
             ButterKnife.bind(this, itemView);
         }
 
-        void bindView(Map map, MapAdapter.MapClickListener listener){
+        void bindView(Integer nextImage, GalleryClickListener listener){
             Glide.with(imageView.getContext())
-                    .load(map.getImage())
+                    .load(nextImage)
                     .centerCrop()
-                    .override(1200,800)
+                    .override(800,600)
                     .into(imageView);
             this.listener = listener;
         }

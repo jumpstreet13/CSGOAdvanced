@@ -8,13 +8,13 @@ public class Map {
    private String shortDescription;
    private String longDescription;
    private int image;
-   private List<Integer> advantages;
+   private List<Integer> images;
 
     public Map(String shortDescription, String longDescription, int image, List<Integer> advantages) {
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         this.image = image;
-        this.advantages = advantages;
+        this.images = advantages;
     }
 
 
@@ -42,11 +42,11 @@ public class Map {
         this.image = image;
     }
 
-    public List<Integer> getAdvantages() {
-        return advantages;
+    public List<Integer> getImages() {
+        return images;
     }
 
-    public void setAdvantages(List<Integer> advantages) {
-        this.advantages = advantages;
+    public void setImages(List<Integer> images) {
+        this.images = images;
     }
 }

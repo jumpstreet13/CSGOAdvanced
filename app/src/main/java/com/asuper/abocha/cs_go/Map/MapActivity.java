@@ -29,7 +29,7 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
     @BindView(R.id.image_collapse) ImageView mImageView;
     @BindView(R.id.toolbar_in_map_activity) Toolbar toolbar;
     @BindView(R.id.activity_map_coordinator_layout) CoordinatorLayout mCoordinatorLayout;
-    Map map = new Map("De dust 2", "this is map",R.drawable.de_inferno);
+    Map map = new Map("De dust 2", "this is map",R.drawable.de_inferno, new ArrayList<Integer>());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,14 +42,14 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
                 .centerCrop()
                 .into(mImageView);
         RecyclerView mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        Map map2 = new Map("De Cache", "this is map", R.drawable.de_cache);
-        Map map3 = new Map("De nuke", "this is map",R.drawable.de_nuke);
+        Map map2 = new Map("De Cache", "this is map", R.drawable.de_cache, new ArrayList<Integer>());
+        Map map3 = new Map("De nuke", "this is map",R.drawable.de_nuke, new ArrayList<Integer>());
         ArrayList<Map> arrayList = new ArrayList<Map>();
         arrayList.add(map);
         arrayList.add(map2);
         arrayList.add(map3);
         MapAdapter adapter = new MapAdapter(arrayList, this);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // TODO: 29.03.17 GridLayoutManager
         mRecyclerView.setAdapter(adapter);
     }
 
