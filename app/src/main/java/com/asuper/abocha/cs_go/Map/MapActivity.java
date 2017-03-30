@@ -58,7 +58,7 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
 
     @Override
     public void onMapClick(ImageView imageView) {
-        Snackbar.make(mCoordinatorLayout, "you tapped me!", LENGTH_SHORT).show();
+        doAnimation(imageView, R.anim.resize_imageview_to_small);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             startWithTransition(MapDetail.class, imageView, "mapImage");
         } else {

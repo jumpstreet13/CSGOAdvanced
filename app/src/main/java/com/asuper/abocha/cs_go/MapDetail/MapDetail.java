@@ -1,5 +1,6 @@
 package com.asuper.abocha.cs_go.MapDetail;
 
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,6 +31,7 @@ public class MapDetail extends BaseActivity implements GalleryAdapter.GalleryCli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_detail);
+        //doAnimation(mapImage, R.anim.resize_imageview_from_small_to_big);
         ButterKnife.bind(this);
         Glide.with(this)
                 .load(R.drawable.de_inferno)
@@ -53,6 +55,15 @@ public class MapDetail extends BaseActivity implements GalleryAdapter.GalleryCli
 
     @Override
     public void onGalleryItemClick(ImageView imageView) {
-        start(GalleryBigDetail.class); // TODO: 30.03.17 Make activity transition intent
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            startWithTransition(GalleryBigDetail.class, imageView, "fromDetailToBig"); // TODO: 30.03.17 Make activity transition intent
+        }else start(GalleryBigDetail.class);
+    }
+
+    @Override
+    public void onBackPressed() {
+        // TODO: 30.03.17 Add animation in MapActivity(resize from small to big)
+        doAnimation(mapImage, R.anim.resize_imageview_to_small);
+        super.onBackPressed();
     }
 }

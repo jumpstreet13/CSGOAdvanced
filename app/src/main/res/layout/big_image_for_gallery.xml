@@ -10,6 +10,7 @@
     <ImageView
         android:id="@+id/big_gallery_image"
         android:layout_width="match_parent"
+        android:transitionName="fromDetailToBig"
         android:background="@color/greyTransparent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"

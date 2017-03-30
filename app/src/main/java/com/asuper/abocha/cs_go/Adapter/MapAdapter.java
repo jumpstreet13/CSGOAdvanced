@@ -64,16 +64,6 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
 
         @OnClick(R.id.cardview_in_map_list)
         void onItemClick(){
-            // TODO: 18.03.2017 Перенести процесс анимации в Base активити, а также сделать анимацию по z оси, сделать анимацию обратного ресайза, возможность увелечения изображений
-
-          //  mAnimation = AnimationUtils.loadAnimation(imageView.getContext(), R.anim.resize_imageview_to_small);
-          //  imageView.startAnimation(mAnimation);
-            // TODO: 27.03.17 Animation to center
-            // TODO: 27.03.17 Animation from center 
-            /*ResizeAnimation resizeAnimation = new ResizeAnimation(imageView, imageView.getWidth()/2, imageView.getHeight()/2);
-            imageView.startAnimation(resizeAnimation);*/
-            Animation animation = AnimationUtils.loadAnimation(imageView.getContext(), R.anim.resize_imageview_to_small);
-            imageView.startAnimation(animation);
             listener.onMapClick(imageView);
         }
 

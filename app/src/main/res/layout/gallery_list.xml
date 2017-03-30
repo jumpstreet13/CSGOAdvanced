@@ -13,6 +13,7 @@
 
     <ImageView
         android:id="@+id/imageview_in_card_gallery_list"
+        android:transitionName="fromDetailToBig"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
