@@ -7,11 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.asuper.abocha.cs_go.Model.Map;
+import com.asuper.abocha.cs_go.Model.GameMap;
 import com.asuper.abocha.cs_go.R;
 import com.bumptech.glide.Glide;
 import java.util.List;
@@ -22,11 +21,11 @@ import butterknife.OnClick;
 
 public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
 
-    private List<Map> mapList;
+    private List<GameMap> mGameMapList;
     private MapClickListener listener;
 
-    public MapAdapter(List<Map> mapList, MapClickListener listener){
-        this.mapList = mapList;
+    public MapAdapter(List<GameMap> gameMapList, MapClickListener listener){
+        this.mGameMapList = gameMapList;
         this.listener = listener;
     }
 
@@ -40,13 +39,13 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
 
     @Override
     public void onBindViewHolder(MapHolder holder, int position) {
-        Map map = mapList.get(position);
-        holder.bindView(map,listener);
+        GameMap gameMap = mGameMapList.get(position);
+        holder.bindView(gameMap,listener);
     }
 
     @Override
     public int getItemCount() {
-        return mapList.size();
+        return mGameMapList.size();
     }
 
     public interface MapClickListener{
@@ -72,10 +71,10 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindView(Map map, MapClickListener listener){
-            textView.setText(map.getShortDescription());
+        void bindView(GameMap gameMap, MapClickListener listener){
+            textView.setText(gameMap.getShortDescription());
             Glide.with(imageView.getContext())
-                    .load(map.getImage())
+                    .load(gameMap.getImage())
                     .centerCrop()
                     .override(1200,800) // TODO: 29.03.17 Find optimal size
                     .into(imageView);
