@@ -27,7 +27,7 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
 
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     @BindView(R.id.image_collapse) ImageView mImageView;
-    @BindView(R.id.toolbar_in_map_activity) Toolbar toolbar;
+    //@BindView(R.id.toolbar_in_map_activity) Toolbar toolbar;
     @BindView(R.id.activity_map_coordinator_layout) CoordinatorLayout mCoordinatorLayout;
     Map map = new Map("De dust 2", "this is map",R.drawable.de_inferno, new ArrayList<Integer>());
 
@@ -36,7 +36,7 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         ButterKnife.bind(this);
-        setupToolbar();
+        //setupToolbar();
         Glide.with(this)
                 .load(R.drawable.main)
                 .centerCrop()
@@ -52,13 +52,11 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // TODO: 29.03.17 GridLayoutManager
         mRecyclerView.setAdapter(adapter);
         // TODO: 29.03.17 Make transluent actionBar
-        // TODO: 29.03.17 Make normal margin between collapsing toolbar and content 
+        // TODO: 29.03.17 Make normal margin between collapsing toolbar and content
     }
 
 
-    public void setupToolbar(){
-        setSupportActionBar(toolbar);
-    }
+
 
     @Override
     public void onMapClick(ImageView imageView) {

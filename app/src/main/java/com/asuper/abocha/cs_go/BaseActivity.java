@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 public class BaseActivity extends AppCompatActivity {
@@ -21,6 +22,10 @@ public class BaseActivity extends AppCompatActivity {
         ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(this, view, name);
         ActivityCompat.startActivity(this, intent, optionsCompat.toBundle());
+    }
+
+    public void setupToolbar(Toolbar toolbar){
+        setSupportActionBar(toolbar);
     }
 
 }
