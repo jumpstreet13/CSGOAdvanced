@@ -37,15 +37,7 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
                 .load(R.drawable.main)
                 .centerCrop()
                 .into(mImageView);
-        GameMap gameMap = new GameMap("De dust 2", "this is mGameMap",R.drawable.de_inferno, "", "", "");
-        GameMap gameMap2 = new GameMap("De dust 2", "this is mGameMap",R.drawable.de_inferno, "", "", "");
-        GameMap gameMap3 = new GameMap("De dust 2", "this is mGameMap",R.drawable.de_inferno, "", "", "");
-        gameMapDao.insertInTx(gameMap, gameMap2, gameMap3);
-        ArrayList<GameMap> arrayList = new ArrayList<GameMap>();
-        arrayList.add(gameMap);
-        arrayList.add(gameMap2);
-        arrayList.add(gameMap3);
-        MapAdapter adapter = new MapAdapter(arrayList, this);
+        MapAdapter adapter = new MapAdapter(gameMapDao.loadAll(), this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // TODO: 29.03.17 GridLayoutManager
         mRecyclerView.setAdapter(adapter);
     }
@@ -57,6 +49,7 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
             startWithTransition(MapDetail.class, imageView, "mapImage");
         } else {
             start(MapDetail.class);
+            // TODO: 30.03.17 Lint Validation
         }
     }
 }

@@ -53,4 +53,13 @@ public class BaseActivity extends AppCompatActivity {
         super.onDestroy();
         daoSession.clear();
     }
+
+    protected void showProgress(){
+
+    }
+
+    protected void hideProgress(){
+
+    }
+
 }
