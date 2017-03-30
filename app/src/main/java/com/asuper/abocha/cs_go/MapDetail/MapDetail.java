@@ -53,6 +53,6 @@ public class MapDetail extends BaseActivity implements GalleryAdapter.GalleryCli
 
     @Override
     public void onGalleryItemClick(ImageView imageView) {
-        start(GalleryBigDetail.class);
+        start(GalleryBigDetail.class); // TODO: 30.03.17 Make activity transition intent
     }
 }

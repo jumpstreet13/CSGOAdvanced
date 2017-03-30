@@ -55,14 +55,10 @@
                 android:id="@+id/recyclerView_in_activity_map_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
-
             </android.support.v7.widget.RecyclerView>
 
         </HorizontalScrollView>
 
 
     </android.support.design.widget.AppBarLayout>
-
-
-
 </android.support.design.widget.CoordinatorLayout>

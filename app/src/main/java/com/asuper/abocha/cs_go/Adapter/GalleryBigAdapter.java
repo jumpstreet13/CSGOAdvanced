@@ -60,6 +60,7 @@ public class GalleryBigAdapter extends RecyclerView.Adapter<GalleryBigAdapter.Ga
         GalleryBigClickListener listener;
         @BindView(R.id.big_gallery_image) ImageView imageView;
 
+
         @OnClick(R.id.big_gallery_image)
         void onGalleryItemClick(){
             listener.onGalleryItemClick(imageView);

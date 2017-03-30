@@ -16,11 +16,18 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class GalleryBigDetail extends AppCompatActivity implements GalleryBigAdapter.GalleryBigClickListener {
 
-    @BindView(R.id.activity_gallery_big_detail) LinearLayout params;
+
     @BindView(R.id.recyclerView_in_bigdetail_activity) RecyclerView mRecyclerView;
+
+    @OnClick(R.id.activity_gallery_big_detail)
+    void onClick(){
+        super.onBackPressed();
+        // TODO: 30.03.17 Add intent for making new Task and push the past activtiy to the toop of the stack
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +51,7 @@ public class GalleryBigDetail extends AppCompatActivity implements GalleryBigAda
 
     @Override
     public void onGalleryItemClick(ImageView imageView) {
-
     }
+
+
 }
