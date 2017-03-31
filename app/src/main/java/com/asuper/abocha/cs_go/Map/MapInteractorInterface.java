@@ -1,5 +1,9 @@
 package com.asuper.abocha.cs_go.Map;
 
 
-public interface MapInteractorInterface {
+import com.asuper.abocha.cs_go.BaseInteractor;
+
+public interface MapInteractorInterface extends BaseInteractor {
+
+
 }
