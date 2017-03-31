@@ -10,7 +10,7 @@ import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.asuper.abocha.cs_go.Model.GameMap;
+import com.asuper.abocha.cs_go.Data.GameDaoMap;
 import com.asuper.abocha.cs_go.R;
 import com.bumptech.glide.Glide;
 import java.util.List;
@@ -21,11 +21,11 @@ import butterknife.OnClick;
 
 public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
 
-    private List<GameMap> mGameMapList;
+    private List<GameDaoMap> mGameDaoMapList;
     private MapClickListener listener;
 
-    public MapAdapter(List<GameMap> gameMapList, MapClickListener listener){
-        this.mGameMapList = gameMapList;
+    public MapAdapter(List<GameDaoMap> gameDaoMapList, MapClickListener listener){
+        this.mGameDaoMapList = gameDaoMapList;
         this.listener = listener;
     }
 
@@ -39,13 +39,13 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
 
     @Override
     public void onBindViewHolder(MapHolder holder, int position) {
-        GameMap gameMap = mGameMapList.get(position);
-        holder.bindView(gameMap,listener);
+        GameDaoMap gameDaoMap = mGameDaoMapList.get(position);
+        holder.bindView(gameDaoMap,listener);
     }
 
     @Override
     public int getItemCount() {
-        return mGameMapList.size();
+        return mGameDaoMapList.size();
     }
 
     public interface MapClickListener{
@@ -71,10 +71,10 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindView(GameMap gameMap, MapClickListener listener){
-            textView.setText(gameMap.getShortDescription());
+        void bindView(GameDaoMap gameDaoMap, MapClickListener listener){
+            textView.setText(gameDaoMap.getShortDescription());
             Glide.with(imageView.getContext())
-                    .load(gameMap.getImage())
+                    .load(gameDaoMap.getImage())
                     .centerCrop()
                     .override(1200,800) // TODO: 29.03.17 Find optimal size
                     .into(imageView);

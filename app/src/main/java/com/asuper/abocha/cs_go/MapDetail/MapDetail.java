@@ -1,7 +1,6 @@
 package com.asuper.abocha.cs_go.MapDetail;
 
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,8 +12,7 @@ import android.widget.ImageView;
 import com.asuper.abocha.cs_go.Adapter.GalleryAdapter;
 import com.asuper.abocha.cs_go.BaseActivity;
 import com.asuper.abocha.cs_go.GalleryBigDetail.GalleryBigDetail;
-import com.asuper.abocha.cs_go.Model.GameMap;
-import com.asuper.abocha.cs_go.Model.GameMapDao;
+import com.asuper.abocha.cs_go.Data.GameDaoMap;
 import com.asuper.abocha.cs_go.R;
 import com.bumptech.glide.Glide;
 
@@ -37,9 +35,9 @@ public class MapDetail extends BaseActivity implements GalleryAdapter.GalleryCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_detail);
         //doAnimation(mapImage, R.anim.resize_imageview_from_small_to_big);
-        QueryBuilder<GameMap> qb = gameMapDao.queryBuilder();
-        qb.where(GameMapDao.Properties.ShortDescription.eq("De dust 2"));
-        Log.d("GreenDAO", qb.list().get(0).getLongDescription());
+        //QueryBuilder<GameDaoMap> qb = gameMapDao.queryBuilder();
+       // qb.where(GameMapDao.Properties.ShortDescription.eq("De dust 2"));
+       // Log.d("GreenDAO", qb.list().get(0).getLongDescription());
         ButterKnife.bind(this);
         Glide.with(this)
                 .load(R.drawable.de_inferno)

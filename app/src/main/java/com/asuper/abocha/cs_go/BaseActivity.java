@@ -12,20 +12,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 
-import com.asuper.abocha.cs_go.Model.DaoSession;
-import com.asuper.abocha.cs_go.Model.GameMapDao;
+import com.asuper.abocha.cs_go.Data.DaoSession;
+import com.asuper.abocha.cs_go.Data.GameDaoMap;
+import com.asuper.abocha.cs_go.Data.GameDaoMapDao;
+
 
 public class BaseActivity extends AppCompatActivity {
 
 
-    protected DaoSession daoSession;
-    protected GameMapDao gameMapDao;
+    //protected DaoSession daoSession;
+   // protected GameDaoMapDao gameMapDao;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        daoSession = ((App) getApplication()).getDaoSession();
-        gameMapDao = daoSession.getGameMapDao();
+        //daoSession = ((App) getApplication()).getDaoSession();
+        //gameMapDao = daoSession.getGameDaoMapDao();
     }
 
     public void start(Class<?> where) {
@@ -51,7 +53,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        daoSession.clear();
+        //daoSession.clear();
     }
 
     protected void showProgress(){

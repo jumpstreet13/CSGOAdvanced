@@ -1,5 +1,8 @@
 package com.asuper.abocha.cs_go.Di;
 
+import com.asuper.abocha.cs_go.Map.MapActivity;
+import com.asuper.abocha.cs_go.SplashActivity;
+
 import javax.inject.Singleton;
 
 import dagger.Component;
@@ -9,6 +12,10 @@ import dagger.Component;
  */
 
 @Singleton
-@Component(modules = {ManagersModule.class,})
+@Component(modules = {ManagersModule.class, UtilsModule.class, AppModule.class, MapperModule.class})
 public interface AppComponent {
+
+    void inject(SplashActivity splashActivity);
+    void inject(MapActivity mapActivity);
+
 }

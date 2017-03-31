@@ -1,7 +1,5 @@
-package com.asuper.abocha.cs_go.Model;
+package com.asuper.abocha.cs_go.Dto;
 
-import com.asuper.abocha.cs_go.Data.GameDaoMap;
-import com.asuper.abocha.cs_go.Dto.GameDtoMap;
 
 import java.util.List;
 
@@ -9,7 +7,7 @@ import java.util.List;
  * Created by abakarmagomedov on 31.03.17.
  */
 
-public class GameMap {
+public class GameDtoMap {
 
     private String shortDescription;
     private String longDescription;
@@ -18,11 +16,11 @@ public class GameMap {
     private List<Integer> flashbangs;
     private List<Integer> molotovs;
 
-    public GameMap() {
+    public GameDtoMap() {
     }
 
-    public GameMap(String shortDescription, String longDescription, int image, List<Integer> smokes,
-                   List<Integer> flashbangs, List<Integer> molotovs) {
+    public GameDtoMap(String shortDescription, String longDescription, int image, List<Integer> smokes,
+                      List<Integer> flashbangs, List<Integer>molotovs) {
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         this.image = image;
@@ -31,33 +29,25 @@ public class GameMap {
         this.molotovs = molotovs;
     }
 
-    public GameMap(GameDtoMap gameDtoMap) {
-        this.shortDescription = gameDtoMap.getShortDescription();
-        this.longDescription = gameDtoMap.getLongDescription();
-        this.image = gameDtoMap.getImage();
-        this.smokes = gameDtoMap.getSmokes();
-        this.flashbangs = gameDtoMap.getFlashbangs();
-        this.molotovs = gameDtoMap.getMolotovs();
-    }
 
     public String getShortDescription() {
         return shortDescription;
-    }
-
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
     }
 
     public String getLongDescription() {
         return longDescription;
     }
 
-    public void setLongDescription(String longDescription) {
-        this.longDescription = longDescription;
-    }
-
     public int getImage() {
         return image;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
+
+    public void setLongDescription(String longDescription) {
+        this.longDescription = longDescription;
     }
 
     public void setImage(int image) {
@@ -87,6 +77,5 @@ public class GameMap {
     public void setMolotovs(List<Integer> molotovs) {
         this.molotovs = molotovs;
     }
-
 
 }
