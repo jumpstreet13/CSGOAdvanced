@@ -7,7 +7,8 @@ import com.asuper.abocha.cs_go.Data.DaoMaster;
 import com.asuper.abocha.cs_go.Data.DaoSession;
 import com.asuper.abocha.cs_go.Di.AppComponent;
 import com.asuper.abocha.cs_go.Di.AppModule;
-import com.asuper.abocha.cs_go.Di.DaggerAppComponent;
+import com.asuper.abocha.cs_go.Di.ManagersModule;
+import com.asuper.abocha.cs_go.Di.MapperModule;
 import com.asuper.abocha.cs_go.Di.UtilsModule;
 
 import org.greenrobot.greendao.database.Database;
@@ -47,6 +48,8 @@ public class App extends Application {
         component = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
                 .utilsModule(new UtilsModule(mDaoSession))
+                .managersModule(new ManagersModule())
+                .mapperModule(new MapperModule())
                 .build();
 
     }

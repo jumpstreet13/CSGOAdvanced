@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.asuper.abocha.cs_go.Data.GameDaoMap;
+import com.asuper.abocha.cs_go.Model.GameMap;
 import com.asuper.abocha.cs_go.R;
 import com.bumptech.glide.Glide;
 import java.util.List;
@@ -21,10 +22,10 @@ import butterknife.OnClick;
 
 public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
 
-    private List<GameDaoMap> mGameDaoMapList;
+    private List<GameMap> mGameDaoMapList;
     private MapClickListener listener;
 
-    public MapAdapter(List<GameDaoMap> gameDaoMapList, MapClickListener listener){
+    public MapAdapter(List<GameMap> gameDaoMapList, MapClickListener listener){
         this.mGameDaoMapList = gameDaoMapList;
         this.listener = listener;
     }
@@ -39,8 +40,8 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
 
     @Override
     public void onBindViewHolder(MapHolder holder, int position) {
-        GameDaoMap gameDaoMap = mGameDaoMapList.get(position);
-        holder.bindView(gameDaoMap,listener);
+        GameMap gameMap = mGameDaoMapList.get(position);
+        holder.bindView(gameMap,listener);
     }
 
     @Override
@@ -71,10 +72,10 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindView(GameDaoMap gameDaoMap, MapClickListener listener){
-            textView.setText(gameDaoMap.getShortDescription());
+        void bindView(GameMap gameMap, MapClickListener listener){
+            textView.setText(gameMap.getShortDescription());
             Glide.with(imageView.getContext())
-                    .load(gameDaoMap.getImage())
+                    .load(gameMap.getImage())
                     .centerCrop()
                     .override(1200,800) // TODO: 29.03.17 Find optimal size
                     .into(imageView);

@@ -15,6 +15,8 @@ import dagger.Component;
 @Component(modules = {ManagersModule.class, UtilsModule.class, AppModule.class, MapperModule.class})
 public interface AppComponent {
 
+    PresenterComponent plusPresenterComponent(PresenterModule presenterModule, InteractorModule interactorModule);
+
     void inject(SplashActivity splashActivity);
     void inject(MapActivity mapActivity);
 

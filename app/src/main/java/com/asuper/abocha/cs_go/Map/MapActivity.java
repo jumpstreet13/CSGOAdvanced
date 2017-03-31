@@ -10,10 +10,14 @@ import android.widget.ImageView;
 import com.asuper.abocha.cs_go.App;
 import com.asuper.abocha.cs_go.BaseActivity;
 import com.asuper.abocha.cs_go.Data.GameDaoMapDao;
+import com.asuper.abocha.cs_go.Di.MapperModule;
 import com.asuper.abocha.cs_go.MapDetail.MapDetail;
 import com.asuper.abocha.cs_go.Adapter.MapAdapter;
+import com.asuper.abocha.cs_go.Model.GameMap;
 import com.asuper.abocha.cs_go.R;
 import com.bumptech.glide.Glide;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -22,7 +26,7 @@ import butterknife.ButterKnife;
 
 public class MapActivity extends BaseActivity implements MapView, MapAdapter.MapClickListener {
 
-    @Inject GameDaoMapDao gameMapDao;
+    @Inject MapPresenterInterface presenter;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     @BindView(R.id.image_collapse) ImageView mImageView;
     @BindView(R.id.activity_map_coordinator_layout) CoordinatorLayout mCoordinatorLayout;
@@ -31,15 +35,17 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
-        App.get(this).getComponent().inject(this);
         ButterKnife.bind(this);
         Glide.with(this)
                 .load(R.drawable.main)
                 .centerCrop()
                 .into(mImageView);
-        MapAdapter adapter = new MapAdapter(gameMapDao.loadAll(), this);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // TODO: 29.03.17 GridLayoutManager
-        mRecyclerView.setAdapter(adapter);
+        presenter.attachView(this);
+    }
+
+    @Override
+    public void injectComponent() {
+        App.get(this).getComponent().plusPresenterComponent(new MapperModule()).inject(this);
     }
 
     @Override
@@ -51,5 +57,12 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
             start(MapDetail.class);
             // TODO: 30.03.17 Lint Validation
         }
+    }
+
+    @Override
+    public void fetchData(List<GameMap> gameMaps) {
+        MapAdapter adapter = new MapAdapter(gameMaps, this);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // TODO: 29.03.17 GridLayoutManager
+        mRecyclerView.setAdapter(adapter);
     }
 }

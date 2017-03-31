@@ -17,7 +17,7 @@ import com.asuper.abocha.cs_go.Data.GameDaoMap;
 import com.asuper.abocha.cs_go.Data.GameDaoMapDao;
 
 
-public class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity {
 
 
     //protected DaoSession daoSession;
@@ -59,6 +59,8 @@ public class BaseActivity extends AppCompatActivity {
     protected void showProgress(){
 
     }
+
+    public abstract void injectComponent();
 
     protected void hideProgress(){
 

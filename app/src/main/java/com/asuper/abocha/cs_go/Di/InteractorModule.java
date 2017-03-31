@@ -3,6 +3,7 @@ package com.asuper.abocha.cs_go.Di;
 import com.asuper.abocha.cs_go.Data.DaoSession;
 import com.asuper.abocha.cs_go.Map.MapInteractor;
 import com.asuper.abocha.cs_go.Map.MapInteractorInterface;
+import com.asuper.abocha.cs_go.Mapper.Mapper;
 
 import dagger.Module;
 import dagger.Provides;
@@ -16,8 +17,8 @@ import dagger.Provides;
 public class InteractorModule {
 
     @Provides
-    MapInteractorInterface provideMapInteractor(DaoSession session){
-        return new MapInteractor(session);
+    MapInteractorInterface provideMapInteractor(DaoSession session, Mapper mapper){
+        return new MapInteractor(session, mapper);
     }
 
 }

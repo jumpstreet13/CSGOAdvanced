@@ -38,4 +38,9 @@ public class SplashActivity extends BaseActivity {
             start(MapActivity.class);
         }
     }
+
+    @Override
+    public void injectComponent() {
+        App.get(this).getComponent().inject(this);
+    }
 }
