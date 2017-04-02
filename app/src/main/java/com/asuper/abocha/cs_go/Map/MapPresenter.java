@@ -6,16 +6,16 @@ import android.support.annotation.NonNull;
 import com.asuper.abocha.cs_go.BaseInteractor;
 import com.asuper.abocha.cs_go.BasePresenterImp;
 import com.asuper.abocha.cs_go.Dto.GameDtoMap;
+import com.asuper.abocha.cs_go.Listeners;
 import com.asuper.abocha.cs_go.Mapper.Mapper;
 import com.asuper.abocha.cs_go.Model.GameMap;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapPresenter extends BasePresenterImp<MapView, MapInteractorInterface> implements MapPresenterInterface, BaseInteractor.onQueryMapsResultedListener {
+public class MapPresenter extends BasePresenterImp<MapView, MapInteractorInterface> implements MapPresenterInterface, Listeners.onQueryMapsResultedListener{
 
     private Mapper<GameDtoMap,GameMap> mapper;
-    private MapInteractorInterface interactor;
 
     public MapPresenter(@NonNull MapInteractorInterface interactor, Mapper<GameDtoMap,GameMap> mapper) {
         super(interactor);
@@ -29,7 +29,7 @@ public class MapPresenter extends BasePresenterImp<MapView, MapInteractorInterfa
 
     @Override
     public void loadData() {
-        interactor.getMaps(this);
+        getInteractor().getMaps(this);
     }
 
     @Override

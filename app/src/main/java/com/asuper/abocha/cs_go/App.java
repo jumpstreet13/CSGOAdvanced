@@ -7,6 +7,7 @@ import com.asuper.abocha.cs_go.Data.DaoMaster;
 import com.asuper.abocha.cs_go.Data.DaoSession;
 import com.asuper.abocha.cs_go.Di.AppComponent;
 import com.asuper.abocha.cs_go.Di.AppModule;
+import com.asuper.abocha.cs_go.Di.DaggerAppComponent;
 import com.asuper.abocha.cs_go.Di.ManagersModule;
 import com.asuper.abocha.cs_go.Di.MapperModule;
 import com.asuper.abocha.cs_go.Di.UtilsModule;
@@ -24,10 +25,6 @@ public class App extends Application {
     @Override
     public void onCreate(){
         super.onCreate();
-
-        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "cs-db");
-        Database db = helper.getWritableDb();
-        mDaoSession = new DaoMaster(db).newSession();
         buildComponent();
     }
 
@@ -47,7 +44,7 @@ public class App extends Application {
     void buildComponent() {
         component = DaggerAppComponent.builder()
                 .appModule(new AppModule(this))
-                .utilsModule(new UtilsModule(mDaoSession))
+                .utilsModule(new UtilsModule())
                 .managersModule(new ManagersModule())
                 .mapperModule(new MapperModule())
                 .build();

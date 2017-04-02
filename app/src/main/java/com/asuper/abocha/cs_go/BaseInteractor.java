@@ -10,9 +10,4 @@ import java.util.List;
 
 public interface BaseInteractor {
 
-     interface onQueryMapsResultedListener {
-        void onSuccess(List<GameDtoMap> maps);
-        void onError();
-    }
-
 }

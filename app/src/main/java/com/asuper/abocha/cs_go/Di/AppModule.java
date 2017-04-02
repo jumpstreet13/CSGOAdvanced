@@ -13,7 +13,6 @@ import dagger.Provides;
  * Created by abakarmagomedov on 30.03.17.
  */
 
-@Singleton
 @Module
 public class AppModule {
 
@@ -23,13 +22,11 @@ public class AppModule {
         this.application = application;
     }
 
-    @Singleton
     @NonNull
     @Provides
+    @Singleton
     Context provideContext(){
         return application.getApplicationContext();
     }
-
-
 
 }

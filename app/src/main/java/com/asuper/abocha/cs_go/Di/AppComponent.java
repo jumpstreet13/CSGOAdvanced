@@ -11,13 +11,12 @@ import dagger.Component;
  * Created by abakarmagomedov on 30.03.17.
  */
 
-@Singleton
+
 @Component(modules = {ManagersModule.class, UtilsModule.class, AppModule.class, MapperModule.class})
+@Singleton
 public interface AppComponent {
 
     PresenterComponent plusPresenterComponent(PresenterModule presenterModule, InteractorModule interactorModule);
-
     void inject(SplashActivity splashActivity);
-    void inject(MapActivity mapActivity);
 
 }

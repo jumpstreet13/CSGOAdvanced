@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.asuper.abocha.cs_go.App;
 import com.asuper.abocha.cs_go.BaseActivity;
 import com.asuper.abocha.cs_go.Data.GameDaoMapDao;
+import com.asuper.abocha.cs_go.Di.InteractorModule;
 import com.asuper.abocha.cs_go.Di.MapperModule;
+import com.asuper.abocha.cs_go.Di.PresenterModule;
 import com.asuper.abocha.cs_go.MapDetail.MapDetail;
 import com.asuper.abocha.cs_go.Adapter.MapAdapter;
 import com.asuper.abocha.cs_go.Model.GameMap;
@@ -40,12 +43,13 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
                 .load(R.drawable.main)
                 .centerCrop()
                 .into(mImageView);
-        presenter.attachView(this);
     }
 
     @Override
     public void injectComponent() {
-        App.get(this).getComponent().plusPresenterComponent(new MapperModule()).inject(this);
+        App.get(this).getComponent().plusPresenterComponent(new PresenterModule(), new InteractorModule()).inject(this);
+        presenter.attachView(this);
+        presenter.loadData();
     }
 
     @Override

@@ -60,6 +60,11 @@ public class MapDetail extends BaseActivity implements GalleryAdapter.GalleryCli
     }
 
     @Override
+    public void injectComponent() {
+
+    }
+
+    @Override
     public void onGalleryItemClick(ImageView imageView) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             startWithTransition(GalleryBigDetail.class, imageView, "fromDetailToBig"); // TODO: 30.03.17 Make activity transition intent

@@ -18,6 +18,7 @@ import dagger.Provides;
 public class PresenterModule {
 
     @Provides
+    @ActivityScope
     MapPresenterInterface provideMapPresenter(MapInteractorInterface interactorInterface, Mapper<GameDtoMap,GameMap> mapper){
         return new MapPresenter(interactorInterface, mapper);
     }

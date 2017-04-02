@@ -30,6 +30,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         //gameMapDao = daoSession.getGameDaoMapDao();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        injectComponent();
+    }
+
     public void start(Class<?> where) {
         Intent intent = new Intent(this, where);
         startActivity(intent);

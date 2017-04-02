@@ -1,10 +1,18 @@
 package com.asuper.abocha.cs_go.Di;
 
+import android.content.Context;
+
+import com.asuper.abocha.cs_go.Data.DaoMaster;
 import com.asuper.abocha.cs_go.Data.DaoSession;
 import com.asuper.abocha.cs_go.Data.GameDaoMapDao;
 import com.bumptech.glide.util.Util;
 import com.google.gson.Gson;
 
+import org.greenrobot.greendao.database.Database;
+
+import javax.inject.Singleton;
+
+import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
 
@@ -16,20 +24,19 @@ import dagger.Provides;
 public class UtilsModule {
 
 
-    private DaoSession mDaoSession;
-
-    public UtilsModule(DaoSession daoSession){
-        mDaoSession = daoSession;
-    }
 
     @Provides
+    @Singleton
     Gson provideGson(){
         return new Gson();
     }
 
     @Provides
-    GameDaoMapDao provideDao(){
-        return mDaoSession.getGameDaoMapDao();
+    @Singleton
+    GameDaoMapDao provideDao(Context context){
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(context, "cs-db");
+        Database db = helper.getWritableDb();
+        return new DaoMaster(db).newSession().getGameDaoMapDao();
     }
 
 }

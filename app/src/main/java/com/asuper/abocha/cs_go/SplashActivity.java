@@ -4,9 +4,13 @@ import android.os.Bundle;
 
 import com.asuper.abocha.cs_go.Data.GameDaoMap;
 import com.asuper.abocha.cs_go.Data.GameDaoMapDao;
+import com.asuper.abocha.cs_go.Di.InteractorModule;
+import com.asuper.abocha.cs_go.Di.PresenterModule;
+import com.asuper.abocha.cs_go.Dto.GameDtoMap;
 import com.asuper.abocha.cs_go.Map.MapActivity;
 import com.asuper.abocha.cs_go.Mapper.GameDaoMapper;
 import com.asuper.abocha.cs_go.Mapper.GameMapMapper;
+import com.asuper.abocha.cs_go.Mapper.Mapper;
 import com.asuper.abocha.cs_go.Model.GameMap;
 
 import java.util.ArrayList;
@@ -17,8 +21,8 @@ import javax.inject.Inject;
 public class SplashActivity extends BaseActivity {
 
     @Inject GameDaoMapDao gameMapDao;
-    @Inject GameDaoMapper gameDaoMapper;
-    @Inject GameMapMapper gameMapMapper;
+    @Inject Mapper<GameDaoMap, GameDtoMap> gameDaoMapper;
+    @Inject Mapper<GameDtoMap, GameMap> gameMapMapper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
