@@ -39,6 +39,7 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map);
         ButterKnife.bind(this);
+        injectComponent();
         Glide.with(this)
                 .load(R.drawable.main)
                 .centerCrop()
@@ -47,7 +48,7 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
 
     @Override
     public void injectComponent() {
-        App.get(this).getComponent().plusPresenterComponent(new PresenterModule(), new InteractorModule()).inject(this);
+        App.get(this).plusPresenterComponent().inject(this);
         presenter.attachView(this);
         presenter.loadData();
     }
@@ -68,5 +69,11 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
         MapAdapter adapter = new MapAdapter(gameMaps, this);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this)); // TODO: 29.03.17 GridLayoutManager
         mRecyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        App.get(this).clearPresenterComponent();
     }
 }

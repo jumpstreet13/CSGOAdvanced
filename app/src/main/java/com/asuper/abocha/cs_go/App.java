@@ -8,8 +8,11 @@ import com.asuper.abocha.cs_go.Data.DaoSession;
 import com.asuper.abocha.cs_go.Di.AppComponent;
 import com.asuper.abocha.cs_go.Di.AppModule;
 import com.asuper.abocha.cs_go.Di.DaggerAppComponent;
+import com.asuper.abocha.cs_go.Di.InteractorModule;
 import com.asuper.abocha.cs_go.Di.ManagersModule;
 import com.asuper.abocha.cs_go.Di.MapperModule;
+import com.asuper.abocha.cs_go.Di.PresenterComponent;
+import com.asuper.abocha.cs_go.Di.PresenterModule;
 import com.asuper.abocha.cs_go.Di.UtilsModule;
 
 import org.greenrobot.greendao.database.Database;
@@ -18,14 +21,26 @@ import org.greenrobot.greendao.database.Database;
 
 public class App extends Application {
 
-    private DaoSession mDaoSession;
+    private PresenterComponent mPresenterComponent;
     private AppComponent component;
+
 
 
     @Override
     public void onCreate(){
         super.onCreate();
         buildComponent();
+    }
+
+    public PresenterComponent plusPresenterComponent(){
+        if(mPresenterComponent == null){
+            mPresenterComponent =  component.plusPresenterComponent(new PresenterModule(), new InteractorModule());
+        }
+        return mPresenterComponent;
+    }
+
+    public void clearPresenterComponent(){
+        mPresenterComponent = null;
     }
 
     public AppComponent getComponent() {
@@ -36,10 +51,6 @@ public class App extends Application {
         return (App) context.getApplicationContext();
     }
 
-
-    public DaoSession getDaoSession(){
-        return mDaoSession;
-    }
 
     void buildComponent() {
         component = DaggerAppComponent.builder()
