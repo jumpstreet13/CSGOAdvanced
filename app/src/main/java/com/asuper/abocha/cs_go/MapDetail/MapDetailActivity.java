@@ -63,7 +63,7 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
     @Override
     public void fetchMainImage(int image) {
         Glide.with(this)
-                .load(R.drawable.de_inferno)
+                .load(image)
                 .centerCrop()
                 .into(mapImage);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.resize_imageview_from_small_to_big); // TODO: 29.03.17 Make animation method in BaseActivity
