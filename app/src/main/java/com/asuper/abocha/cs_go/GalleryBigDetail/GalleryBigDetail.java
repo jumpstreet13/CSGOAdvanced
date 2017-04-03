@@ -1,5 +1,6 @@
 package com.asuper.abocha.cs_go.GalleryBigDetail;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -32,6 +33,7 @@ public class GalleryBigDetail extends AppCompatActivity implements GalleryBigAda
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery_big_detail);
         ButterKnife.bind(this);
+        Intent intent = new Intent();
         List<Integer> mockList = new ArrayList<>();
         mockList.add(R.drawable.de_cache);
         mockList.add(R.drawable.de_nuke);
