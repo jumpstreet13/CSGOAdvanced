@@ -9,6 +9,8 @@ import java.util.List;
 
 public class GameDtoMap {
 
+    // TODO: 03.04.17 Make idForSearch and delete id which exists now
+    private Long id;
     private String shortDescription;
     private String longDescription;
     private int image;
@@ -19,8 +21,9 @@ public class GameDtoMap {
     public GameDtoMap() {
     }
 
-    public GameDtoMap(String shortDescription, String longDescription, int image, List<Integer> smokes,
+    public GameDtoMap(Long id,String shortDescription, String longDescription, int image, List<Integer> smokes,
                       List<Integer> flashbangs, List<Integer>molotovs) {
+        this.id = id;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         this.image = image;
@@ -78,4 +81,11 @@ public class GameDtoMap {
         this.molotovs = molotovs;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

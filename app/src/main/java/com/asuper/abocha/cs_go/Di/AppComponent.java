@@ -1,6 +1,5 @@
 package com.asuper.abocha.cs_go.Di;
 
-import com.asuper.abocha.cs_go.Map.MapActivity;
 import com.asuper.abocha.cs_go.SplashActivity;
 
 import javax.inject.Singleton;

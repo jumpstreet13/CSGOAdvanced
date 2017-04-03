@@ -1,13 +1,11 @@
 package com.asuper.abocha.cs_go.GalleryBigDetail;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
-import com.asuper.abocha.cs_go.Adapter.GalleryAdapter;
 import com.asuper.abocha.cs_go.Adapter.GalleryBigAdapter;
 import com.asuper.abocha.cs_go.R;
 

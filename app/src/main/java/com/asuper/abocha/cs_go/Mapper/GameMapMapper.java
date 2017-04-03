@@ -12,6 +12,7 @@ public class GameMapMapper implements Mapper<GameDtoMap, GameMap>  {
     @Override
     public GameMap mapTo(GameDtoMap gameDtoMap) {
         GameMap gameMap = new GameMap();
+        gameMap.setId(gameDtoMap.getId());
         gameMap.setShortDescription(gameDtoMap.getShortDescription());
         gameMap.setLongDescription(gameDtoMap.getLongDescription());
         gameMap.setImage(gameDtoMap.getImage());
@@ -24,6 +25,7 @@ public class GameMapMapper implements Mapper<GameDtoMap, GameMap>  {
     @Override
     public GameDtoMap mapFrom(GameMap gameMap) {
         GameDtoMap gameDtoMap = new GameDtoMap();
+        gameDtoMap.setId(gameMap.getId());
         gameDtoMap.setShortDescription(gameMap.getShortDescription());
         gameDtoMap.setLongDescription(gameMap.getLongDescription());
         gameDtoMap.setImage(gameMap.getImage());

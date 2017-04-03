@@ -3,7 +3,6 @@ package com.asuper.abocha.cs_go.Map;
 
 import android.support.annotation.NonNull;
 
-import com.asuper.abocha.cs_go.BaseInteractor;
 import com.asuper.abocha.cs_go.BasePresenterImp;
 import com.asuper.abocha.cs_go.Dto.GameDtoMap;
 import com.asuper.abocha.cs_go.Listeners;

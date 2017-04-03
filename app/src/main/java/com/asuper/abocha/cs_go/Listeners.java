@@ -14,5 +14,11 @@ public interface Listeners {
         void onSuccess(List<GameDtoMap> maps);
         void onError();
     }
+
+    interface onQueryTacticImagesListener{
+        void onSuccessTacticks(List<Integer> maps);
+        void onSuccessMainImage(Integer image);
+        void onError();
+    }
     
 }

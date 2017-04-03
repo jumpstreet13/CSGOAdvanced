@@ -3,7 +3,6 @@ package com.asuper.abocha.cs_go.Mapper;
 import com.asuper.abocha.cs_go.Data.GameDaoMap;
 import com.asuper.abocha.cs_go.Dto.GameDtoMap;
 import com.asuper.abocha.cs_go.Managers.GsonManager;
-import com.google.gson.Gson;
 
 import javax.inject.Inject;
 
@@ -18,6 +17,7 @@ public class GameDaoMapper implements Mapper<GameDaoMap, GameDtoMap> {
     @Override
     public GameDtoMap mapTo(GameDaoMap gameDaoMap) {
         GameDtoMap gameDtoMap = new GameDtoMap();
+        gameDtoMap.setId(gameDaoMap.getId());
         gameDtoMap.setShortDescription(gameDaoMap.getShortDescription());
         gameDtoMap.setLongDescription(gameDaoMap.getLongDescription());
         gameDtoMap.setImage(gameDaoMap.getImage());
@@ -30,6 +30,7 @@ public class GameDaoMapper implements Mapper<GameDaoMap, GameDtoMap> {
     @Override
     public GameDaoMap mapFrom(GameDtoMap gameDtoMap) {
         GameDaoMap gameDaoMap = new GameDaoMap();
+        gameDaoMap.setId(gameDtoMap.getId());
         gameDaoMap.setShortDescription(gameDtoMap.getShortDescription());
         gameDaoMap.setLongDescription(gameDtoMap.getLongDescription());
         gameDaoMap.setImage(gameDtoMap.getImage());

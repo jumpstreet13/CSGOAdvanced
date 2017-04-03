@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MapDetail.MapDetail">
+        <activity android:name=".MapDetail.MapDetailActivity">
         </activity>
         <activity android:name=".GalleryBigDetail.GalleryBigDetail"
                   android:theme="@style/Transparent">

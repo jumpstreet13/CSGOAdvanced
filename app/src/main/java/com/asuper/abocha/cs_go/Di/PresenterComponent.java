@@ -1,6 +1,7 @@
 package com.asuper.abocha.cs_go.Di;
 
 import com.asuper.abocha.cs_go.Map.MapActivity;
+import com.asuper.abocha.cs_go.MapDetail.MapDetailActivity;
 import com.asuper.abocha.cs_go.SplashActivity;
 
 import dagger.Subcomponent;
@@ -14,4 +15,5 @@ import dagger.Subcomponent;
 public interface PresenterComponent {
     void inject(MapActivity mapActivity);
     void inject(SplashActivity splashActivity);
+    void inject(MapDetailActivity mapDetail);
 }

@@ -1,10 +1,10 @@
 package com.asuper.abocha.cs_go.Map;
 
-import com.asuper.abocha.cs_go.Data.DaoSession;
 import com.asuper.abocha.cs_go.Data.GameDaoMap;
 import com.asuper.abocha.cs_go.Data.GameDaoMapDao;
 import com.asuper.abocha.cs_go.Dto.GameDtoMap;
 import com.asuper.abocha.cs_go.Listeners;
+import com.asuper.abocha.cs_go.Managers.QueryManager;
 import com.asuper.abocha.cs_go.Mapper.Mapper;
 
 import java.util.ArrayList;
@@ -16,12 +16,12 @@ import java.util.List;
 
 public class MapInteractor implements MapInteractorInterface {
 
-    private GameDaoMapDao session;
+    private QueryManager mQueryManager;
     private Mapper<GameDaoMap, GameDtoMap>  mMapper;
 
 
-    public MapInteractor(GameDaoMapDao session, Mapper<GameDaoMap, GameDtoMap>  mMapper ) {
-        this.session = session;
+    public MapInteractor(QueryManager queryManager, Mapper<GameDaoMap, GameDtoMap>  mMapper ) {
+        mQueryManager = queryManager;
         this.mMapper = mMapper;
     }
 
@@ -29,7 +29,7 @@ public class MapInteractor implements MapInteractorInterface {
     @Override
     public void getMaps(Listeners.onQueryMapsResultedListener listener) {
         List<GameDtoMap> maps = new ArrayList<>();
-        for(GameDaoMap gmp : session.loadAll()){
+        for(GameDaoMap gmp : mQueryManager.getAllMaps()){
             maps.add(mMapper.mapTo(gmp));
         }
         if(!maps.isEmpty()){

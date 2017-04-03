@@ -1,17 +1,9 @@
 package com.asuper.abocha.cs_go.Data;
 
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
-import org.greenrobot.greendao.annotation.apihint.Internal;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
+import org.greenrobot.greendao.annotation.Id;
 
 
 @Entity

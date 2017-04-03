@@ -5,17 +5,12 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.ImageView;
 
+import com.asuper.abocha.cs_go.Adapter.MapAdapter;
 import com.asuper.abocha.cs_go.App;
 import com.asuper.abocha.cs_go.BaseActivity;
-import com.asuper.abocha.cs_go.Data.GameDaoMapDao;
-import com.asuper.abocha.cs_go.Di.InteractorModule;
-import com.asuper.abocha.cs_go.Di.MapperModule;
-import com.asuper.abocha.cs_go.Di.PresenterModule;
-import com.asuper.abocha.cs_go.MapDetail.MapDetail;
-import com.asuper.abocha.cs_go.Adapter.MapAdapter;
+import com.asuper.abocha.cs_go.MapDetail.MapDetailActivity;
 import com.asuper.abocha.cs_go.Model.GameMap;
 import com.asuper.abocha.cs_go.R;
 import com.bumptech.glide.Glide;
@@ -40,6 +35,8 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
         setContentView(R.layout.activity_map);
         ButterKnife.bind(this);
         injectComponent();
+        presenter.attachView(this);
+        presenter.loadData();
         Glide.with(this)
                 .load(R.drawable.main)
                 .centerCrop()
@@ -49,17 +46,15 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
     @Override
     public void injectComponent() {
         App.get(this).plusPresenterComponent().inject(this);
-        presenter.attachView(this);
-        presenter.loadData();
     }
 
     @Override
-    public void onMapClick(ImageView imageView) {
+    public void onMapClick(ImageView imageView, Long id) {
         doAnimation(imageView, R.anim.resize_imageview_to_small);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            startWithTransition(MapDetail.class, imageView, "mapImage");
+            startWithTransition(MapDetailActivity.class, imageView, "mapImage", id);
         } else {
-            start(MapDetail.class);
+            start(MapDetailActivity.class, id);
             // TODO: 30.03.17 Lint Validation
         }
     }

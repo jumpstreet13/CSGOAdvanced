@@ -3,8 +3,6 @@ package com.asuper.abocha.cs_go;
 import android.app.Application;
 import android.content.Context;
 
-import com.asuper.abocha.cs_go.Data.DaoMaster;
-import com.asuper.abocha.cs_go.Data.DaoSession;
 import com.asuper.abocha.cs_go.Di.AppComponent;
 import com.asuper.abocha.cs_go.Di.AppModule;
 import com.asuper.abocha.cs_go.Di.DaggerAppComponent;
@@ -14,8 +12,6 @@ import com.asuper.abocha.cs_go.Di.MapperModule;
 import com.asuper.abocha.cs_go.Di.PresenterComponent;
 import com.asuper.abocha.cs_go.Di.PresenterModule;
 import com.asuper.abocha.cs_go.Di.UtilsModule;
-
-import org.greenrobot.greendao.database.Database;
 
 
 

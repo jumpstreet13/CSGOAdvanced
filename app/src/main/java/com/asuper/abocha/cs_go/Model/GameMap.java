@@ -1,6 +1,5 @@
 package com.asuper.abocha.cs_go.Model;
 
-import com.asuper.abocha.cs_go.Data.GameDaoMap;
 import com.asuper.abocha.cs_go.Dto.GameDtoMap;
 
 import java.util.List;
@@ -11,6 +10,12 @@ import java.util.List;
 
 public class GameMap {
 
+    /**
+     * Field id only for search in database, at this level this field is not required (greenDao produce id by itself)
+     */
+
+    // TODO: 03.04.17 Make idForSearch and delete id which exists now
+    private Long id;
     private String shortDescription;
     private String longDescription;
     private int image;
@@ -32,6 +37,7 @@ public class GameMap {
     }
 
     public GameMap(GameDtoMap gameDtoMap) {
+        this.id = gameDtoMap.getId();
         this.shortDescription = gameDtoMap.getShortDescription();
         this.longDescription = gameDtoMap.getLongDescription();
         this.image = gameDtoMap.getImage();
@@ -88,5 +94,17 @@ public class GameMap {
         this.molotovs = molotovs;
     }
 
+    /**
+     * Field id only for search in database, at this level this field is not required (greenDao produce id by itself)
+     */
+    public Long getId() {
+        return id;
+    }
 
+    /**
+     * Field id only for search in database, at this level this field is not required (greenDao produce id by itself)
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
