@@ -25,7 +25,6 @@ public class MapDetailPresenterImp extends BasePresenterImp<MapDetailView, MapDe
         super.detachView();
     }
 
-
     @Override
     public void onSuccessTacticks(List<Integer> maps) {
         getView().fetchTacticksImage(maps);
@@ -37,9 +36,7 @@ public class MapDetailPresenterImp extends BasePresenterImp<MapDetailView, MapDe
     }
 
     @Override
-    public void onError() {
-
-    }
+    public void onError() {}
 
     @Override
     public void getMainImage(Long id) {

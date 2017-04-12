@@ -32,23 +32,31 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void startWithTransition(Class<?> where, View view, String name){
+    public void startWithTransition(Class<?> where, View view, String name, boolean flag){
         Intent intent = new Intent(this, where);
+        if(flag){
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        }
         ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(this, view, name);
         ActivityCompat.startActivity(this, intent, optionsCompat.toBundle());
     }
 
 
-    public void start(Class<?> where, Long id) {
+    public void start(Class<?> where, boolean flag) {
         Intent intent = new Intent(this, where);
-        intent.putExtra(StringUtils.ID_TAG_IN_INTENT, id);
+        if(flag){
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        }
         startActivity(intent);
     }
 
-    public void startWithTransition(Class<?> where, View view, String name, Long id){
+    //// TODO: 12.04.17 Singleton with id of element which is selected
+
+    public void startWithTransition(Class<?> where, View view, String name){
         Intent intent = new Intent(this, where);
-        intent.putExtra(StringUtils.ID_TAG_IN_INTENT, id);
         ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(this, view, name);
         ActivityCompat.startActivity(this, intent, optionsCompat.toBundle());

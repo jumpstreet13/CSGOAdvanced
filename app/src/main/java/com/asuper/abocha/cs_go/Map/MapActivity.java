@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.asuper.abocha.cs_go.Adapter.MapAdapter;
 import com.asuper.abocha.cs_go.App;
 import com.asuper.abocha.cs_go.BaseActivity;
+import com.asuper.abocha.cs_go.Managers.MyTransitionManager;
 import com.asuper.abocha.cs_go.MapDetail.MapDetailActivity;
 import com.asuper.abocha.cs_go.Model.GameMap;
 import com.asuper.abocha.cs_go.R;
@@ -25,6 +26,7 @@ import butterknife.ButterKnife;
 public class MapActivity extends BaseActivity implements MapView, MapAdapter.MapClickListener {
 
     @Inject MapPresenterInterface presenter;
+    @Inject MyTransitionManager transition;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     @BindView(R.id.image_collapse) ImageView mImageView;
     @BindView(R.id.activity_map_coordinator_layout) CoordinatorLayout mCoordinatorLayout;
@@ -52,11 +54,12 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
     public void onMapClick(ImageView imageView, Long id) {
         doAnimation(imageView, R.anim.resize_imageview_to_small);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            startWithTransition(MapDetailActivity.class, imageView, "mapImage", id);
+            startWithTransition(MapDetailActivity.class, imageView, "mapImage");
         } else {
-            start(MapDetailActivity.class, id);
+            start(MapDetailActivity.class);
             // TODO: 30.03.17 Lint Validation
         }
+        transition.setLastTransition(id);
     }
 
     @Override

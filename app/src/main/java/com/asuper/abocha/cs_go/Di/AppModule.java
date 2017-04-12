@@ -3,6 +3,7 @@ package com.asuper.abocha.cs_go.Di;
 import android.app.Application;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.transition.TransitionManager;
 
 import javax.inject.Singleton;
 
@@ -29,4 +30,10 @@ public class AppModule {
         return application.getApplicationContext();
     }
 
+    @NonNull
+    @Provides
+    @Singleton
+    TransitionManager providemanager(){
+        return new TransitionManager();
+    }
 }
