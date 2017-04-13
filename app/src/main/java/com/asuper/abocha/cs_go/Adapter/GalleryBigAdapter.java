@@ -64,7 +64,6 @@ public class GalleryBigAdapter extends RecyclerView.Adapter<GalleryBigAdapter.Ga
         @OnClick(R.id.big_gallery_image)
         void onGalleryItemClick(){
             listener.onGalleryItemClick(imageView);
-            // TODO: 28.03.17 Creating activity with transparent black background and show the image in the big size
         }
 
         public GalleryBigHolder(View itemView) {

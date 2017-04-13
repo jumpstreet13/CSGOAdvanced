@@ -65,7 +65,6 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryH
 
         @OnClick(R.id.cardview_in_gallery_list)
         void onGalleryItemClick() {
-            // TODO: 28.03.17 Creating activity with transparent black background and show the image in the big size
             switch (tacticks) {
                 case MOLOTOVS:
                     listener.onGalleryItemClick(imageView, Tacticks.MOLOTOVS);

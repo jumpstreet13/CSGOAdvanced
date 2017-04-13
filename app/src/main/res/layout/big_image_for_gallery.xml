@@ -7,7 +7,7 @@
              android:orientation="vertical"
              android:padding="@dimen/padding_between_cards">
 
-    <ImageView
+    <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/big_gallery_image"
         android:layout_width="match_parent"
         android:transitionName="fromDetailToBig"

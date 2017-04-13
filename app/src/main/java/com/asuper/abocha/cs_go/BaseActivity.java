@@ -15,8 +15,8 @@ import android.view.animation.AnimationUtils;
 public abstract class BaseActivity extends AppCompatActivity {
 
 
-    //protected DaoSession daoSession;
-   // protected GameDaoMapDao gameMapDao;
+    // protected DaoSession daoSession;
+    // protected GameDaoMapDao gameMapDao;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,15 +26,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
-
     public void start(Class<?> where) {
         Intent intent = new Intent(this, where);
         startActivity(intent);
     }
 
-    public void startWithTransition(Class<?> where, View view, String name, boolean flag){
+    public void startWithTransition(Class<?> where, View view, String name, boolean flag) {
         Intent intent = new Intent(this, where);
-        if(flag){
+        if (flag) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         }
@@ -46,7 +45,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public void start(Class<?> where, boolean flag) {
         Intent intent = new Intent(this, where);
-        if(flag){
+        if (flag) {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         }
@@ -55,18 +54,18 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     //// TODO: 12.04.17 Singleton with id of element which is selected
 
-    public void startWithTransition(Class<?> where, View view, String name){
+    public void startWithTransition(Class<?> where, View view, String name) {
         Intent intent = new Intent(this, where);
         ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(this, view, name);
         ActivityCompat.startActivity(this, intent, optionsCompat.toBundle());
     }
 
-    public void doAnimation(View targetView, int animation){
+    public void doAnimation(View targetView, int animation) {
         targetView.startAnimation(AnimationUtils.loadAnimation(this, animation));
     }
 
-    public void setupToolbar(Toolbar toolbar){
+    public void setupToolbar(Toolbar toolbar) {
         setSupportActionBar(toolbar);
     }
 
@@ -76,13 +75,13 @@ public abstract class BaseActivity extends AppCompatActivity {
         //daoSession.clear();
     }
 
-    protected void showProgress(){
+    protected void showProgress() {
 
     }
 
     public abstract void injectComponent();
 
-    protected void hideProgress(){
+    protected void hideProgress() {
 
     }
 

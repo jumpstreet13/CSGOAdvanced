@@ -9,7 +9,6 @@ import java.util.List;
 
 public class GameDtoMap {
 
-    // TODO: 03.04.17 Make idForSearch and delete id which exists now
     private Long id;
     private String shortDescription;
     private String longDescription;

@@ -15,7 +15,6 @@ public class GameMap {
      * Field id only for search in database, at this level this field is not required (greenDao produce id by itself)
      */
 
-    // TODO: 03.04.17 Make idForSearch and delete id which exists now
     private Long id;
     private String shortDescription;
     private String longDescription;

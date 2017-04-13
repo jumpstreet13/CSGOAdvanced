@@ -29,11 +29,4 @@ public class AppModule {
     Context provideContext(){
         return application.getApplicationContext();
     }
-
-    @NonNull
-    @Provides
-    @Singleton
-    TransitionManager providemanager(){
-        return new TransitionManager();
-    }
 }

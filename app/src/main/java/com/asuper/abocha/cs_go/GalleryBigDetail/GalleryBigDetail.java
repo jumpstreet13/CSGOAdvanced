@@ -42,7 +42,6 @@ public class GalleryBigDetail extends BaseActivity implements GalleryBigAdapter.
     @OnClick(R.id.activity_gallery_big_detail)
     void onClick() {
         start(MapDetailActivity.class, true);
-        // TODO: 30.03.17 Add intent for making new Task and push the past activtiy to the toop of the stack
     }
 
 
@@ -58,7 +57,6 @@ public class GalleryBigDetail extends BaseActivity implements GalleryBigAdapter.
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setAdapter(galleryAdapter);
-        // TODO: 29.03.17 If click on background of activity go back to last activity
     }
 
     @Override

@@ -19,5 +19,4 @@ public interface AppComponent {
     PresenterComponent plusPresenterComponent(PresenterModule presenterModule, InteractorModule interactorModule);
     void inject(SplashActivity splashActivity);
     void inject(GalleryBigDetail bigDetail);
-
 }

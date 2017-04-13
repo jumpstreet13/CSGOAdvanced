@@ -24,7 +24,7 @@ public class QueryManager {
 
     public GameDaoMap getMapById(Long id){
         return mGameMapDao.queryBuilder()
-                .where(GameDaoMapDao.Properties.Id.eq(id)) // TODO: 03.04.17 Add using QueryManager
+                .where(GameDaoMapDao.Properties.Id.eq(id))
                 .unique();
     }
 
