@@ -11,6 +11,6 @@ import java.util.List;
 public interface MapDetailView extends BaseView {
 
      void fetchMainImage(int image);
-     void fetchTacticksImage(List<Integer> tacticks);
+     void fetchTacticksImage(List<Integer> tacticksSmokes, List<Integer> tackticsFlashBangs, List<Integer> tackticksMolotovs);
 
 }

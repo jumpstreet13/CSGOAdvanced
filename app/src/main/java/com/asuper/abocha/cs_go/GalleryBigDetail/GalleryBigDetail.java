@@ -16,6 +16,7 @@ import com.asuper.abocha.cs_go.Managers.MyTransitionManager;
 import com.asuper.abocha.cs_go.Managers.QueryManager;
 import com.asuper.abocha.cs_go.MapDetail.MapDetailActivity;
 import com.asuper.abocha.cs_go.Mapper.Mapper;
+import com.asuper.abocha.cs_go.Model.GameMap;
 import com.asuper.abocha.cs_go.R;
 
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class GalleryBigDetail extends BaseActivity implements GalleryBigAdapter.
     @Inject MyTransitionManager transition;
     @Inject QueryManager manager;
     @Inject Mapper<GameDaoMap, GameDtoMap> mapper;
+    @Inject Mapper<GameDtoMap, GameMap> dataMapper;
     @BindView(R.id.recyclerView_in_bigdetail_activity) RecyclerView mRecyclerView;
 
     @OnClick(R.id.activity_gallery_big_detail)
@@ -49,7 +51,9 @@ public class GalleryBigDetail extends BaseActivity implements GalleryBigAdapter.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery_big_detail);
         ButterKnife.bind(this);
-        GalleryBigAdapter galleryAdapter = new GalleryBigAdapter(mapper.mapTo(manager.getMapById(transition.getLastTransition())).getSmokes(), this);
+        GalleryBigAdapter galleryAdapter = new GalleryBigAdapter(dataMapper.mapTo(mapper.mapTo(manager.getMapById(transition.getLastTransition()))).
+                getExactTactick(transition.getActualTactick()), this);
+        // TODO: 13.04.17 Make this logic more clear!!
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(linearLayoutManager);

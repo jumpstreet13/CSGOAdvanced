@@ -1,6 +1,7 @@
 package com.asuper.abocha.cs_go.Model;
 
 import com.asuper.abocha.cs_go.Dto.GameDtoMap;
+import com.asuper.abocha.cs_go.Tacticks;
 
 import java.util.List;
 
@@ -106,5 +107,18 @@ public class GameMap {
      */
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public List<Integer> getExactTactick(Tacticks tacticks) {
+        switch (tacticks) {
+            case SMOKES:
+                return smokes;
+            case FLASHBANGS:
+                return flashbangs;
+            case MOLOTOVS:
+                return molotovs;
+            default:
+                return null;
+        }
     }
 }

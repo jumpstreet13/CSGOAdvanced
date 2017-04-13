@@ -2,7 +2,6 @@ package com.asuper.abocha.cs_go.MapDetail;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.support.transition.TransitionManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.animation.Animation;
@@ -15,7 +14,7 @@ import com.asuper.abocha.cs_go.BaseActivity;
 import com.asuper.abocha.cs_go.GalleryBigDetail.GalleryBigDetail;
 import com.asuper.abocha.cs_go.Managers.MyTransitionManager;
 import com.asuper.abocha.cs_go.R;
-import com.asuper.abocha.cs_go.StringUtils;
+import com.asuper.abocha.cs_go.Tacticks;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -50,10 +49,21 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
     }
 
     @Override
-    public void onGalleryItemClick(ImageView imageView) {
+    public void onGalleryItemClick(ImageView imageView, Tacticks tacticks) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             startWithTransition(GalleryBigDetail.class, imageView, "fromDetailToBig", false); // TODO: 30.03.17 Make activity transition intent
         }else start(GalleryBigDetail.class);
+        switch (tacticks){
+            case MOLOTOVS:
+                transition.setTrueOneAndSetFalseAnothers(Tacticks.MOLOTOVS);
+                break;
+            case FLASHBANGS:
+                transition.setTrueOneAndSetFalseAnothers(Tacticks.FLASHBANGS);
+                break;
+            case SMOKES:
+                transition.setTrueOneAndSetFalseAnothers(Tacticks.SMOKES);
+                break;
+        }
     }
 
     @Override
@@ -74,18 +84,24 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
     }
 
     @Override
-    public void fetchTacticksImage(List<Integer> tacticks) {
-        GalleryAdapter galleryAdapter = new GalleryAdapter(tacticks, this);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        mRecyclerView.setLayoutManager(linearLayoutManager);
-        mRecyclerView.setAdapter(galleryAdapter);
+    public void fetchTacticksImage(List<Integer> tacticksSmokes, List<Integer> tacticksFlashBangs, List<Integer> tacticksMolotovs) {
+        fetchRecycler(mRecyclerView, tacticksSmokes, Tacticks.SMOKES);
+        //fetchRecycler(mRecyclerView, tacticksFlashBangs, Tacticks.FLASHBANGS);
+        //fetchRecycler(mRecyclerView, tacticksMolotovs, Tacticks.MOLOTOVS);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         App.get(this).clearPresenterComponent();
+    }
+
+    private void fetchRecycler(RecyclerView recyclerView, List<Integer> tacktics, Tacticks which){
+        GalleryAdapter galleryAdapter = new GalleryAdapter(tacktics, this, which);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(galleryAdapter);
     }
 
 }
