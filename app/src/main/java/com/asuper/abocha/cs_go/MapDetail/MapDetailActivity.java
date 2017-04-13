@@ -14,6 +14,7 @@ import com.asuper.abocha.cs_go.BaseActivity;
 import com.asuper.abocha.cs_go.GalleryBigDetail.GalleryBigDetail;
 import com.asuper.abocha.cs_go.Managers.MyTransitionManager;
 import com.asuper.abocha.cs_go.R;
+import com.asuper.abocha.cs_go.StateImageView;
 import com.asuper.abocha.cs_go.Tacticks;
 import com.bumptech.glide.Glide;
 
@@ -23,13 +24,54 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MapDetailActivity extends BaseActivity implements MapDetailView, GalleryAdapter.GalleryClickListener {
 
     @Inject MapDetailPresenter presenter;
     @Inject MyTransitionManager transition;
     @BindView(R.id.image_collapse) ImageView mapImage;
-    @BindView(R.id.recyclerView_in_activity_map_detail) RecyclerView mRecyclerView;
+    @BindView(R.id.recyclerView_withSmokes_in_activity_map_detail) RecyclerView recyclerViewSmokes;
+    @BindView(R.id.recyclerView_withFlashBangs_in_activity_map_detail) RecyclerView recyclerViewFlashBangs;
+    @BindView(R.id.recyclerView_withMolotovs_in_activity_map_detail) RecyclerView recyclerViewMolotovs;
+    @BindView(R.id.smokes) StateImageView smokes;
+    @BindView(R.id.flashbangs) StateImageView flash;
+    @BindView(R.id.molotovs) StateImageView molotovs;
+    // TODO: 13.04.17 Add scrollView to layout for supporting small devices
+
+    @OnClick(R.id.smokes)
+    void onSmokeClick() {
+        if(smokes.isStateTurnOn()) {
+            recyclerViewSmokes.setAdapter(null);
+            //smokes.setStateTurnOn(true, R.drawable);
+        }else{
+            presenter.getTacticks(transition.getLastTransition(), Tacticks.SMOKES);
+            //smokes.setStateTurnOn(true, R.drawable);
+        }
+    }
+
+    @OnClick(R.id.flashbangs)
+    void onFlashClick() {
+        if(flash.isStateTurnOn()) {
+            recyclerViewFlashBangs.setAdapter(null);
+            //flashbangs.setStateTurnOn(true, R.drawable);
+        }else{
+            presenter.getTacticks(transition.getLastTransition(), Tacticks.FLASHBANGS);
+            //flashbangs.setStateTurnOn(true, R.drawable);
+        }
+
+    }
+
+    @OnClick(R.id.molotovs)
+    void onMolotovClick() {
+        if(molotovs.isStateTurnOn()) {
+            recyclerViewMolotovs.setAdapter(null);
+            //molotovs.setStateTurnOn(true, R.drawable);
+        }else{
+            presenter.getTacticks(transition.getLastTransition(), Tacticks.MOLOTOVS);
+            //molotovs.setStateTurnOn(true, R.drawable);
+        }
+    }
 
 
     @Override
@@ -40,7 +82,7 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
         injectComponent();
         presenter.attachView(this);
         presenter.getMainImage(transition.getLastTransition());
-        presenter.getTacticks(transition.getLastTransition());
+        //presenter.getTacticks(transition.getLastTransition());
     }
 
     @Override
@@ -52,8 +94,8 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
     public void onGalleryItemClick(ImageView imageView, Tacticks tacticks) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             startWithTransition(GalleryBigDetail.class, imageView, "fromDetailToBig", false); // TODO: 30.03.17 Make activity transition intent
-        }else start(GalleryBigDetail.class);
-        switch (tacticks){
+        } else start(GalleryBigDetail.class);
+        switch (tacticks) {
             case MOLOTOVS:
                 transition.setTrueOneAndSetFalseAnothers(Tacticks.MOLOTOVS);
                 break;
@@ -84,10 +126,19 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
     }
 
     @Override
-    public void fetchTacticksImage(List<Integer> tacticksSmokes, List<Integer> tacticksFlashBangs, List<Integer> tacticksMolotovs) {
-        fetchRecycler(mRecyclerView, tacticksSmokes, Tacticks.SMOKES);
-        //fetchRecycler(mRecyclerView, tacticksFlashBangs, Tacticks.FLASHBANGS);
-        //fetchRecycler(mRecyclerView, tacticksMolotovs, Tacticks.MOLOTOVS);
+    public void fetchTacticksImage(List<Integer> tacticks, Tacticks type) {
+        switch (type) {
+            case SMOKES:
+                fetchRecycler(recyclerViewSmokes, tacticks, type);
+                break;
+            case FLASHBANGS:
+                fetchRecycler(recyclerViewSmokes, tacticks, type);
+                break;
+            case MOLOTOVS:
+                fetchRecycler(recyclerViewSmokes, tacticks, type);
+                break;
+
+        }
     }
 
     @Override
@@ -96,8 +147,8 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
         App.get(this).clearPresenterComponent();
     }
 
-    private void fetchRecycler(RecyclerView recyclerView, List<Integer> tacktics, Tacticks which){
-        GalleryAdapter galleryAdapter = new GalleryAdapter(tacktics, this, which);
+    private void fetchRecycler(RecyclerView recyclerView, List<Integer> tacktics, Tacticks which) {
+        RecyclerView.Adapter galleryAdapter = new GalleryAdapter(tacktics, this, which);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerView.setLayoutManager(linearLayoutManager);

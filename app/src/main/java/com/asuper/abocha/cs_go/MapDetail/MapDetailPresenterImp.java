@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 
 import com.asuper.abocha.cs_go.BasePresenterImp;
 import com.asuper.abocha.cs_go.Listeners;
+import com.asuper.abocha.cs_go.Tacticks;
 
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
 
 public class MapDetailPresenterImp extends BasePresenterImp<MapDetailView, MapDetailInteractor> implements MapDetailPresenter, Listeners.onQueryTacticImagesListener {
 
+    private Tacticks nowTactick;
 
     public MapDetailPresenterImp(@NonNull MapDetailInteractor interactor) {
         super(interactor);
@@ -27,7 +29,7 @@ public class MapDetailPresenterImp extends BasePresenterImp<MapDetailView, MapDe
 
     @Override
     public void onSuccessTacticks(List<Integer> maps) {
-        getView().fetchTacticksImage(maps);
+        getView().fetchTacticksImage(maps, nowTactick);
     }
 
     @Override
@@ -44,7 +46,8 @@ public class MapDetailPresenterImp extends BasePresenterImp<MapDetailView, MapDe
     }
 
     @Override
-    public void getTacticks(Long id) {
+    public void getTacticks(Long id, Tacticks tacticks) {
         getInteractor().getTacticks(id, this);
+        nowTactick = tacticks;
     }
 }

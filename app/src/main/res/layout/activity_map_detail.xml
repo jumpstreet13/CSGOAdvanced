@@ -43,6 +43,10 @@
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,23 +71,66 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.asuper.abocha.cs_go.StateImageView
+                android:id="@+id/smokes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.asuper.abocha.cs_go.StateImageView
+                android:id="@+id/flashbangs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.asuper.abocha.cs_go.StateImageView
+                android:id="@+id/molotovs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
 
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView_in_activity_map_detail"
+                android:id="@+id/recyclerView_withSmokes_in_activity_map_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
             </android.support.v7.widget.RecyclerView>
 
         </HorizontalScrollView>
 
-
-        <TextView
+        <HorizontalScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView_withFlashBangs_in_activity_map_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
+
+        </HorizontalScrollView>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView_withMolotovs_in_activity_map_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+            </android.support.v7.widget.RecyclerView>
+
+        </HorizontalScrollView>
+
 
 
     </android.support.design.widget.AppBarLayout>

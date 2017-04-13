@@ -1,6 +1,7 @@
 package com.asuper.abocha.cs_go.MapDetail;
 
 import com.asuper.abocha.cs_go.BaseView;
+import com.asuper.abocha.cs_go.Tacticks;
 
 import java.util.List;
 
@@ -11,6 +12,6 @@ import java.util.List;
 public interface MapDetailView extends BaseView {
 
      void fetchMainImage(int image);
-     void fetchTacticksImage(List<Integer> tacticksSmokes, List<Integer> tackticsFlashBangs, List<Integer> tackticksMolotovs);
+     void fetchTacticksImage(List<Integer> tacticks, Tacticks type);
 
 }
