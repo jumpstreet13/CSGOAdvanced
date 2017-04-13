@@ -12,6 +12,7 @@ import com.asuper.abocha.cs_go.Data.DaoMaster;
 import com.asuper.abocha.cs_go.Data.GameDaoMapDao;
 import com.asuper.abocha.cs_go.Managers.MyTransitionManager;
 import com.asuper.abocha.cs_go.R;
+import com.asuper.abocha.cs_go.StopwatchTextView;
 import com.google.gson.Gson;
 
 import org.greenrobot.greendao.database.Database;
@@ -56,8 +57,12 @@ public class UtilsModule {
     @NonNull
     @Provides
     @Singleton
-    MyTransitionManager providemanager() {
+    MyTransitionManager provideManager() {
         return new MyTransitionManager();
     }
+
+    @Provides
+    @Singleton
+    StopwatchTextView provideStopWatch(){return  new StopwatchTextView();}
 
 }

@@ -6,7 +6,6 @@ package com.asuper.abocha.cs_go;
 
 public interface StringUtils {
 
-    String ID_TAG_IN_INTENT = "ID_TAG_IN_INTENT";
-    String IMAGES_TAG_IN_INTENT = "IMAGES_TAG_IN_INTENT";
+    String FILE_WITH_HELLO = "/welcome_back.3gp";
 
 }

@@ -21,13 +21,13 @@ public class MapperModule {
 
     @Singleton
     @Provides
-    Mapper<GameDaoMap, GameDtoMap> provideGameDaoMapper(){
+    Mapper<GameDaoMap, GameDtoMap> provideGameDaoMapper() {
         return new GameDaoMapper();
     }
 
     @Singleton
     @Provides
-    Mapper<GameDtoMap, GameMap>  provideGameMapMapper(){
+    Mapper<GameDtoMap, GameMap> provideGameMapMapper() {
         return new GameMapMapper();
     }
 

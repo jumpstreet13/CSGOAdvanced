@@ -14,6 +14,8 @@ import dagger.Subcomponent;
 @ActivityScope
 public interface PresenterComponent {
     void inject(MapActivity mapActivity);
+
     void inject(SplashActivity splashActivity);
+
     void inject(MapDetailActivity mapDetail);
 }

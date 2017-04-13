@@ -14,28 +14,25 @@ import com.asuper.abocha.cs_go.Di.PresenterModule;
 import com.asuper.abocha.cs_go.Di.UtilsModule;
 
 
-
 public class App extends Application {
 
     private PresenterComponent mPresenterComponent;
     private AppComponent component;
 
-
-
     @Override
-    public void onCreate(){
+    public void onCreate() {
         super.onCreate();
         buildComponent();
     }
 
-    public PresenterComponent plusPresenterComponent(){
-        if(mPresenterComponent == null){
-            mPresenterComponent =  component.plusPresenterComponent(new PresenterModule(), new InteractorModule());
+    public PresenterComponent plusPresenterComponent() {
+        if (mPresenterComponent == null) {
+            mPresenterComponent = component.plusPresenterComponent(new PresenterModule(), new InteractorModule());
         }
         return mPresenterComponent;
     }
 
-    public void clearPresenterComponent(){
+    public void clearPresenterComponent() {
         mPresenterComponent = null;
     }
 
@@ -55,7 +52,6 @@ public class App extends Application {
                 .managersModule(new ManagersModule())
                 .mapperModule(new MapperModule())
                 .build();
-
     }
 
 }
