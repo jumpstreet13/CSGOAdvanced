@@ -26,7 +26,7 @@ public class SplashActivity extends BaseActivity {
     @Inject Mapper<GameDtoMap, GameMap> gameMapMapper;
     @Inject ProgressDialog progressDialog;
     private String mFileName = null;
-    private MediaPlayer mPlayer=null;
+    private MediaPlayer mPlayer = null;
     private Handler mHandler = new Handler();
     // TODO: 13.04.17 Add ability to say hello by user voice
 
@@ -42,9 +42,12 @@ public class SplashActivity extends BaseActivity {
         if (gameMapDao.loadAll().size() > 0) {
             startWithDelay();
         } else {
-            GameMap gameMap = new GameMap("De dust 2", "this is mGameMap", R.drawable.de_inferno, new ArrayList<Integer>(), new ArrayList<Integer>(), new ArrayList<Integer>());
-            GameMap gameMap2 = new GameMap("De dust 2", "this is mGameMap", R.drawable.de_inferno, new ArrayList<Integer>(), new ArrayList<Integer>(), new ArrayList<Integer>());
-            GameMap gameMap3 = new GameMap("De dust 2", "this is mGameMap", R.drawable.de_inferno, new ArrayList<Integer>(), new ArrayList<Integer>(), new ArrayList<Integer>());
+            GameMap gameMap = new GameMap("De dust 2", "this is mGameMap", R.drawable.de_inferno,
+                    new ArrayList<Integer>(), new ArrayList<Integer>(), new ArrayList<Integer>());
+            GameMap gameMap2 = new GameMap("De dust 2", "this is mGameMap", R.drawable.de_inferno,
+                    new ArrayList<Integer>(), new ArrayList<Integer>(), new ArrayList<Integer>());
+            GameMap gameMap3 = new GameMap("De dust 2", "this is mGameMap", R.drawable.de_inferno,
+                    new ArrayList<Integer>(), new ArrayList<Integer>(), new ArrayList<Integer>());
             gameMapDao.insertOrReplaceInTx(gameDaoMapper.mapFrom(gameMapMapper.mapFrom(gameMap)),
                     gameDaoMapper.mapFrom(gameMapMapper.mapFrom(gameMap2)),
                     gameDaoMapper.mapFrom(gameMapMapper.mapFrom(gameMap3)));
@@ -62,8 +65,8 @@ public class SplashActivity extends BaseActivity {
             @Override
             public void run() {
                 startPlaying();
-                while (true){
-                    if(!mPlayer.isPlaying()) break;
+                while (true) {
+                    if (!mPlayer.isPlaying()) break;
                 }
                 stopPlaying();
                 start(MapActivity.class);
@@ -79,6 +82,7 @@ public class SplashActivity extends BaseActivity {
             mPlayer.prepare();
             mPlayer.start();
         } catch (IOException e) {
+            //mPlayer.setDataSource(); // TODO: 13.04.17 If file is not exist set default hello word
             Log.e("Failure", "prepare() failed");
         }
     }

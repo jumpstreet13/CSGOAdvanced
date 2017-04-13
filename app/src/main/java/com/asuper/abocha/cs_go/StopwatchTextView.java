@@ -10,7 +10,9 @@ import android.widget.TextView;
 
 public class StopwatchTextView implements Runnable {
 
-    public enum TimerState {STOPPED, PAUSED, RUNNING};
+    public enum TimerState {STOPPED, PAUSED, RUNNING}
+
+    ;
 
     private TextView widget;
     private long updateInterval;
@@ -99,8 +101,7 @@ public class StopwatchTextView implements Runnable {
      * Returns the interval (in ms) at which
      * the timer widget is updated.
      *
-     * @return
-     * 		Time in milliseconds
+     * @return Time in milliseconds
      */
     public long getUpdateInterval() {
         return updateInterval;
@@ -110,8 +111,7 @@ public class StopwatchTextView implements Runnable {
      * Sets the update interval for the
      * timer widget.
      *
-     * @param updateInterval
-     * 		Interval in milliseconds
+     * @param updateInterval Interval in milliseconds
      */
     public void setUpdateInterval(long updateInterval) {
         this.updateInterval = updateInterval;
@@ -120,8 +120,7 @@ public class StopwatchTextView implements Runnable {
     /**
      * Returns the current state of the stop-watch.
      *
-     * @return
-     * 		State of stop-watch
+     * @return State of stop-watch
      */
     public TimerState getState() {
         return state;
