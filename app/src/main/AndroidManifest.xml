@@ -28,6 +28,8 @@
         </activity>
         <activity android:name=".VoiceRecordActivity">
         </activity>
+        <activity android:name=".Stream.StreamActivity">
+        </activity>
     </application>
 
 </manifest>

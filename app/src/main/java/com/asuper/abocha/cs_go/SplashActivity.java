@@ -55,6 +55,8 @@ public class SplashActivity extends BaseActivity {
         }
     }
 
+    // TODO: 14.04.17 Add transient button for skipping hello music, but after database is filled
+
     @Override
     public void injectComponent() {
         App.get(this).getComponent().inject(this);
