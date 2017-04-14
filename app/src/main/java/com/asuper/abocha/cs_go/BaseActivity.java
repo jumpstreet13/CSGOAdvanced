@@ -25,6 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         //gameMapDao = daoSession.getGameDaoMapDao();
     }
 
+    // TODO: 14.04.17 Add tools to layouts to see all clear
 
     public void start(Class<?> where) {
         Intent intent = new Intent(this, where);
