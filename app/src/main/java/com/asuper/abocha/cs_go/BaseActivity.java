@@ -75,14 +75,6 @@ public abstract class BaseActivity extends AppCompatActivity {
         //daoSession.clear();
     }
 
-    protected void showProgress() {
-
-    }
-
     public abstract void injectComponent();
-
-    protected void hideProgress() {
-
-    }
 
 }

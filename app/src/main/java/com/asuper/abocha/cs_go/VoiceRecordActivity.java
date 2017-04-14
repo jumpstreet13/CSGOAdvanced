@@ -74,6 +74,7 @@ public class VoiceRecordActivity extends BaseActivity {
             Log.e("Fail", "prepare() failed");
         }
         mRecorder.start();
+        // TODO: 14.04.17 Add slide transition appear
     }
 
     private void stopRecord() {
