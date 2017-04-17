@@ -23,6 +23,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //daoSession = ((App) getApplication()).getDaoSession();
         //gameMapDao = daoSession.getGameDaoMapDao();
+        // TODO: 17.04.17 https://github.com/lgvalle/Material-Animations
     }
 
     // TODO: 14.04.17 Add tools to layouts to see all clear

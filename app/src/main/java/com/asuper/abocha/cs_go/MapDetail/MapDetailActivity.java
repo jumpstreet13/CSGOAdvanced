@@ -16,6 +16,7 @@ import com.asuper.abocha.cs_go.Managers.MyTransitionManager;
 import com.asuper.abocha.cs_go.R;
 import com.asuper.abocha.cs_go.StateImageView;
 import com.asuper.abocha.cs_go.Tacticks;
+import com.asuper.abocha.cs_go.VoiceRecordActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -38,6 +39,11 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
     @BindView(R.id.flashbangs) StateImageView flash;
     @BindView(R.id.molotovs) StateImageView molotovs;
     // TODO: 13.04.17 Add scrollView to layout for supporting small devices
+
+    @OnClick(R.id.fab_in_activity_map)
+    void onFabClick(){
+        start(VoiceRecordActivity.class);
+    }
 
     @OnClick(R.id.smokes)
     void onSmokeClick() {

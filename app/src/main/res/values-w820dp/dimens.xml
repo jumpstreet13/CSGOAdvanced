@@ -7,6 +7,7 @@
     <dimen name="activity_horizontal_margin">64dp</dimen>
     <dimen name="margin_bottom_between_cards">32dp</dimen>
     <dimen name="margin_sides_between_cards">16dp</dimen>
+    <dimen name="fabMargins">32dp</dimen>
 
 
     <!--paddings-->
