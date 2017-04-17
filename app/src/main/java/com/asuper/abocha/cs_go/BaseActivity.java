@@ -14,15 +14,9 @@ import android.view.animation.AnimationUtils;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
-
-    // protected DaoSession daoSession;
-    // protected GameDaoMapDao gameMapDao;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //daoSession = ((App) getApplication()).getDaoSession();
-        //gameMapDao = daoSession.getGameDaoMapDao();
         // TODO: 17.04.17 https://github.com/lgvalle/Material-Animations
     }
 
@@ -74,7 +68,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //daoSession.clear();
     }
 
     public abstract void injectComponent();

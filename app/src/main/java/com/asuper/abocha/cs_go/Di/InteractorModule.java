@@ -24,14 +24,13 @@ public class InteractorModule {
 
     @Provides
     @ActivityScope
-    MapInteractorInterface provideMapInteractor(QueryManager queryManager, Mapper<GameDaoMap, GameDtoMap>  mapper){
+    MapInteractorInterface provideMapInteractor(QueryManager queryManager, Mapper<GameDaoMap, GameDtoMap> mapper) {
         return new MapInteractor(queryManager, mapper);
     }
 
     @Provides
     @ActivityScope
-    MapDetailInteractor provideMapDetailInteractor(QueryManager queryManager, Mapper<GameDaoMap, GameDtoMap>  mapper){
+    MapDetailInteractor provideMapDetailInteractor(QueryManager queryManager, Mapper<GameDaoMap, GameDtoMap> mapper) {
         return new MapDetailInteractorImp(queryManager, mapper);
     }
-
 }
