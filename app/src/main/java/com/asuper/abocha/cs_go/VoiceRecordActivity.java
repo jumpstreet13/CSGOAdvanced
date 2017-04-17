@@ -4,10 +4,8 @@ import android.Manifest;
 import android.media.MediaRecorder;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.io.IOException;
@@ -35,7 +33,7 @@ public class VoiceRecordActivity extends BaseActivity {
         if (record.isStateTurnOn()) {
             stopRecord();
             // record.setStateTurnOn(false, ); // TODO: 13.04.17 Add here imageResource
-            Snackbar.make(layout, "Succesfully recorded", 3000);
+            Snackbar.make(layout, R.string.succesfully_record, 3000);
         } else {
             startRecord();
             // record.setStateTurnOn(true, );
@@ -86,7 +84,7 @@ public class VoiceRecordActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         if (record.isStateTurnOn()) {
-            Snackbar.make(layout, "Recording is turning on, you can not go away!", 2000);
+            Snackbar.make(layout, R.string.cant_go_away_now, 2000);
         } else {
             super.onBackPressed();
         }

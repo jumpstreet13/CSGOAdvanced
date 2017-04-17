@@ -41,16 +41,16 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
     // TODO: 13.04.17 Add scrollView to layout for supporting small devices
 
     @OnClick(R.id.fab_in_activity_map)
-    void onFabClick(){
+    void onFabClick() {
         start(VoiceRecordActivity.class);
     }
 
     @OnClick(R.id.smokes)
     void onSmokeClick() {
-        if(smokes.isStateTurnOn()) {
+        if (smokes.isStateTurnOn()) {
             recyclerViewSmokes.setAdapter(null);
             //smokes.setStateTurnOn(true, R.drawable);
-        }else{
+        } else {
             presenter.getTacticks(transition.getLastTransition(), Tacticks.SMOKES);
             //smokes.setStateTurnOn(true, R.drawable);
         }
@@ -58,10 +58,10 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
 
     @OnClick(R.id.flashbangs)
     void onFlashClick() {
-        if(flash.isStateTurnOn()) {
+        if (flash.isStateTurnOn()) {
             recyclerViewFlashBangs.setAdapter(null);
             //flashbangs.setStateTurnOn(true, R.drawable);
-        }else{
+        } else {
             presenter.getTacticks(transition.getLastTransition(), Tacticks.FLASHBANGS);
             //flashbangs.setStateTurnOn(true, R.drawable);
         }
@@ -70,10 +70,10 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
 
     @OnClick(R.id.molotovs)
     void onMolotovClick() {
-        if(molotovs.isStateTurnOn()) {
+        if (molotovs.isStateTurnOn()) {
             recyclerViewMolotovs.setAdapter(null);
             //molotovs.setStateTurnOn(true, R.drawable);
-        }else{
+        } else {
             presenter.getTacticks(transition.getLastTransition(), Tacticks.MOLOTOVS);
             //molotovs.setStateTurnOn(true, R.drawable);
         }
@@ -88,7 +88,6 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
         injectComponent();
         presenter.attachView(this);
         presenter.getMainImage(transition.getLastTransition());
-        //presenter.getTacticks(transition.getLastTransition());
     }
 
     @Override
@@ -138,12 +137,11 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
                 fetchRecycler(recyclerViewSmokes, tacticks, type);
                 break;
             case FLASHBANGS:
-                fetchRecycler(recyclerViewSmokes, tacticks, type);
+                fetchRecycler(recyclerViewFlashBangs, tacticks, type);
                 break;
             case MOLOTOVS:
-                fetchRecycler(recyclerViewSmokes, tacticks, type);
+                fetchRecycler(recyclerViewMolotovs, tacticks, type);
                 break;
-
         }
     }
 

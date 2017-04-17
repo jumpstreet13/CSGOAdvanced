@@ -24,7 +24,6 @@ public class StateImageView extends ImageView {
         super(context, attrs, defStyleAttr);
     }
 
-
     public boolean isStateTurnOn() {
         return stateTurnOn;
     }
