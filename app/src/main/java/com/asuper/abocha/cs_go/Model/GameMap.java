@@ -26,6 +26,12 @@ public class GameMap {
     public GameMap() {
     }
 
+    public GameMap(String shortDescription, String longDescription, int image) {
+        this.shortDescription = shortDescription;
+        this.longDescription = longDescription;
+        this.image = image;
+    }
+
     public GameMap(String shortDescription, String longDescription, int image, List<Integer> smokes,
                    List<Integer> flashbangs, List<Integer> molotovs) {
         this.shortDescription = shortDescription;
