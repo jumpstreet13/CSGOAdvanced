@@ -12,6 +12,7 @@ public class GameDaoMap {
     @Id
     private Long id;
 
+    private int idForSearch;
     private String shortDescription;
     private String longDescription;
     private int image;
@@ -30,10 +31,11 @@ public class GameDaoMap {
     }
 
 
-    @Generated(hash = 19001181)
-    public GameDaoMap(Long id, String shortDescription, String longDescription, int image, String smokes, String flashbangs,
-            String molotovs) {
+    @Generated(hash = 1773700178)
+    public GameDaoMap(Long id, int idForSearch, String shortDescription, String longDescription, int image, String smokes,
+            String flashbangs, String molotovs) {
         this.id = id;
+        this.idForSearch = idForSearch;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         this.image = image;
@@ -104,6 +106,14 @@ public class GameDaoMap {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public int getIdForSearch() {
+        return idForSearch;
+    }
+
+    public void setIdForSearch(int idForSearch) {
+        this.idForSearch = idForSearch;
     }
 
 

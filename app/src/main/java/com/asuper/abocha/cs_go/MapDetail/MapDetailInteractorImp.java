@@ -22,7 +22,7 @@ public class MapDetailInteractorImp implements MapDetailInteractor {
     }
 
     @Override
-    public void getTacticks(Long id, Listeners.onQueryTacticImagesListener listener) {
+    public void getTacticks(int id, Listeners.onQueryTacticImagesListener listener) {
         GameDaoMap gameDaoMapList = mQueryManager.getMapById(id);
         if(gameDaoMapList != null){
             listener.onSuccessTacticks(mapper.mapTo(gameDaoMapList).getSmokes());
@@ -32,7 +32,7 @@ public class MapDetailInteractorImp implements MapDetailInteractor {
     }
 
     @Override
-    public void getMainImage(Long id, Listeners.onQueryTacticImagesListener listener) {
+    public void getMainImage(int id, Listeners.onQueryTacticImagesListener listener) {
         GameDaoMap gameDaoMapList = mQueryManager.getMapById(id);
         if(gameDaoMapList != null){
             listener.onSuccessMainImage(mapper.mapTo(gameDaoMapList).getImage());

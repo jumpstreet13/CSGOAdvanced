@@ -41,13 +41,13 @@ public class MapDetailPresenterImp extends BasePresenterImp<MapDetailView, MapDe
     public void onError() {}
 
     @Override
-    public void getMainImage(Long id) {
+    public void getMainImage(int id) {
         getInteractor().getMainImage(id, this);
     }
 
     @Override
-    public void getTacticks(Long id, Tacticks tacticks) {
-        getInteractor().getTacticks(id, this);
+    public void getTacticks(int id, Tacticks tacticks) {
         nowTactick = tacticks;
+        getInteractor().getTacticks(id, this);
     }
 }

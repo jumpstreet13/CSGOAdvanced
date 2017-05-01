@@ -8,17 +8,17 @@ import com.asuper.abocha.cs_go.Tacticks;
 
 public class MyTransitionManager {
 
-    private Long lastTransition;
+    private int lastTransition;
     private boolean smokes;
     private boolean flashbangs;
     private boolean molotovs;
 
 
-    public Long getLastTransition() {
+    public int getLastTransition() {
         return lastTransition;
     }
 
-    public void setLastTransition(Long lastTransition) {
+    public void setLastTransition(int lastTransition) {
         this.lastTransition = lastTransition;
     }
 

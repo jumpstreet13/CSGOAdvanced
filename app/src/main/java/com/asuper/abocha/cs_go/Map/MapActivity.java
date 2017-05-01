@@ -14,6 +14,7 @@ import com.asuper.abocha.cs_go.Managers.MyTransitionManager;
 import com.asuper.abocha.cs_go.MapDetail.MapDetailActivity;
 import com.asuper.abocha.cs_go.Model.GameMap;
 import com.asuper.abocha.cs_go.R;
+import com.asuper.abocha.cs_go.VoiceRecordActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -22,6 +23,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class MapActivity extends BaseActivity implements MapView, MapAdapter.MapClickListener {
 
@@ -30,6 +32,11 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
     @BindView(R.id.image_collapse) ImageView mImageView;
     @BindView(R.id.activity_map_coordinator_layout) CoordinatorLayout mCoordinatorLayout;
+
+    @OnClick(R.id.fab_in_activity_map)
+    void onFabClick() {
+        start(VoiceRecordActivity.class);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +58,7 @@ public class MapActivity extends BaseActivity implements MapView, MapAdapter.Map
     }
 
     @Override
-    public void onMapClick(ImageView imageView, Long id) {
+    public void onMapClick(ImageView imageView, int id) {
         doAnimation(imageView, R.anim.resize_imageview_to_small);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             startWithTransition(MapDetailActivity.class, imageView, "mapImage");

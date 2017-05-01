@@ -12,10 +12,10 @@ import java.util.List;
 public class GameMap {
 
     /**
-     * Field id only for search in database, at this level this field is not required (greenDao produce id by itself)
+     * Field idForSearch only for search in database, at this level this field is not required (greenDao produce idForSearch by itself)
      */
 
-    private Long id;
+    private int idForSearch;
     private String shortDescription;
     private String longDescription;
     private int image;
@@ -43,7 +43,7 @@ public class GameMap {
     }
 
     public GameMap(GameDtoMap gameDtoMap) {
-        this.id = gameDtoMap.getId();
+        this.idForSearch = gameDtoMap.getIdForSearch();
         this.shortDescription = gameDtoMap.getShortDescription();
         this.longDescription = gameDtoMap.getLongDescription();
         this.image = gameDtoMap.getImage();
@@ -101,17 +101,17 @@ public class GameMap {
     }
 
     /**
-     * Field id only for search in database, at this level this field is not required (greenDao produce id by itself)
+     * Field idForSearch only for search in database, at this level this field is not required (greenDao produce idForSearch by itself)
      */
-    public Long getId() {
-        return id;
+    public int getIdForSearch() {
+        return idForSearch;
     }
 
     /**
-     * Field id only for search in database, at this level this field is not required (greenDao produce id by itself)
+     * Field idForSearch only for search in database, at this level this field is not required (greenDao produce idForSearch by itself)
      */
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdForSearch(int idForSearch) {
+        this.idForSearch = idForSearch;
     }
 
     public List<Integer> getExactTactick(Tacticks tacticks) {

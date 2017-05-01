@@ -9,7 +9,7 @@ import com.asuper.abocha.cs_go.Tacticks;
 
 public interface MapDetailPresenter extends BasePresenter<MapDetailView, MapDetailInteractor> {
 
-    void getMainImage(Long id);
-    void getTacticks(Long id, Tacticks tacticks);
+    void getMainImage(int id);
+    void getTacticks(int id, Tacticks tacticks);
 
 }

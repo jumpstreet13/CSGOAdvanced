@@ -50,7 +50,7 @@ public class UtilsModule {
         ProgressDialog progressDialog = new ProgressDialog(context, R.style.ProgressBarStyle);
         progressDialog.setCancelable(false);
         progressDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        //progressDialog.setContentView(R.layout.progress_splash);
+       // progressDialog.setContentView(R.layout.progress_splash);
         return progressDialog;
     }
 

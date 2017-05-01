@@ -12,31 +12,35 @@ import javax.inject.Inject;
 
 public class GameDaoMapper implements Mapper<GameDaoMap, GameDtoMap> {
 
-    @Inject GsonManager mGsonManager;
+    private GsonManager mGsonManager;
+
+    public GameDaoMapper(GsonManager gsonManager) {
+        mGsonManager = gsonManager;
+    }
 
     @Override
     public GameDtoMap mapTo(GameDaoMap gameDaoMap) {
         GameDtoMap gameDtoMap = new GameDtoMap();
-        gameDtoMap.setId(gameDaoMap.getId());
+        gameDtoMap.setIdForSearch(gameDaoMap.getIdForSearch());
         gameDtoMap.setShortDescription(gameDaoMap.getShortDescription());
         gameDtoMap.setLongDescription(gameDaoMap.getLongDescription());
         gameDtoMap.setImage(gameDaoMap.getImage());
-       /* gameDtoMap.setSmokes(mGsonManager.getListIntegerFromJson(gameDaoMap.getSmokes()));
+        gameDtoMap.setSmokes(mGsonManager.getListIntegerFromJson(gameDaoMap.getSmokes()));
         gameDtoMap.setFlashbangs(mGsonManager.getListIntegerFromJson(gameDaoMap.getFlashbangs()));
-        gameDtoMap.setMolotovs(mGsonManager.getListIntegerFromJson(gameDaoMap.getMolotovs()));*/
+        gameDtoMap.setMolotovs(mGsonManager.getListIntegerFromJson(gameDaoMap.getMolotovs()));
         return gameDtoMap;
     }
 
     @Override
     public GameDaoMap mapFrom(GameDtoMap gameDtoMap) {
         GameDaoMap gameDaoMap = new GameDaoMap();
-        gameDaoMap.setId(gameDtoMap.getId());
+        gameDaoMap.setIdForSearch(gameDtoMap.getIdForSearch());
         gameDaoMap.setShortDescription(gameDtoMap.getShortDescription());
         gameDaoMap.setLongDescription(gameDtoMap.getLongDescription());
         gameDaoMap.setImage(gameDtoMap.getImage());
-        /*gameDaoMap.setSmokes(mGsonManager.makeJsonFromIntegerList(gameDtoMap.getSmokes()));
+        gameDaoMap.setSmokes(mGsonManager.makeJsonFromIntegerList(gameDtoMap.getSmokes()));
         gameDaoMap.setFlashbangs(mGsonManager.makeJsonFromIntegerList(gameDtoMap.getFlashbangs()));
-        gameDaoMap.setMolotovs(mGsonManager.makeJsonFromIntegerList(gameDtoMap.getMolotovs()));*/
+        gameDaoMap.setMolotovs(mGsonManager.makeJsonFromIntegerList(gameDtoMap.getMolotovs()));
         return gameDaoMap;
     }
 }

@@ -49,7 +49,7 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
     }
 
     public interface MapClickListener{
-        void onMapClick(ImageView imageView, Long id);
+        void onMapClick(ImageView imageView, int id);
     }
 
 
@@ -63,7 +63,7 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
 
         @OnClick(R.id.cardview_in_map_list)
         void onItemClick(){
-            listener.onMapClick(imageView, mGameMap.getId());
+            listener.onMapClick(imageView, mGameMap.getIdForSearch());
         }
 
         public MapHolder(View itemView) {

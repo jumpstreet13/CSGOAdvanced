@@ -15,6 +15,7 @@ import com.asuper.abocha.cs_go.Model.GameMap;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -40,6 +41,13 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         injectComponent();
+        infernoRask = Arrays.asList(R.drawable.de_cache);
+        nukeRask = Arrays.asList(R.drawable.de_cache);
+        trainRask = Arrays.asList(R.drawable.de_cache);
+        mirageRask = Arrays.asList(R.drawable.de_cache);
+        overpassRask = Arrays.asList(R.drawable.de_cache);
+        cobleRask = Arrays.asList(R.drawable.de_cache);
+        dust2Rask = Arrays.asList(R.drawable.de_cache);
     }
 
     @Override
@@ -47,32 +55,39 @@ public class SplashActivity extends BaseActivity {
         super.onStart();
         mFileName = getExternalCacheDir().getAbsolutePath();
         mFileName += StringUtils.FILE_WITH_HELLO;   // TODO: 13.04.17 Refactor this with Dagger
-        progressDialog.show();
+//        progressDialog.show();
         App.get(this).getComponent().inject(this);
         if (gameMapDao.loadAll().size() > 0) {
             startWithDelay();
         } else {
             GameMap inferno = new GameMap("Inferno", "this is mGameMap", R.drawable.de_inferno);
-            GameMap nuke = new GameMap("Nuke", "this is mGameMap", R.drawable.de_inferno);
+            GameMap nuke = new GameMap( "Nuke", "this is mGameMap", R.drawable.de_inferno);
             GameMap train = new GameMap("Train", "this is mGameMap", R.drawable.de_inferno);
-            GameMap mirage = new GameMap("Mirage", "this is mGameMap", R.drawable.de_inferno);
+            GameMap mirage = new GameMap("Mirage", "this is mGameMap", R.drawable.de_inferno); // TODO: 01/05/17 Delete these casts
             GameMap overpass = new GameMap("Overpass", "this is mGameMap", R.drawable.de_inferno);
             GameMap coble = new GameMap("Coble", "this is mGameMap", R.drawable.de_inferno);
             GameMap dust2 = new GameMap("Dust2", "this is mGameMap", R.drawable.de_inferno);
-            fillSmokes(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask, 15);
+            inferno.setIdForSearch(0);
+            nuke.setIdForSearch(1);
+            train.setIdForSearch(2);
+            mirage.setIdForSearch(3);
+            overpass.setIdForSearch(4);
+            coble.setIdForSearch(5);
+            dust2.setIdForSearch(6);
+          //  fillSmokes(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask, 15);
             inferno.setSmokes(infernoRask); nuke.setSmokes(nukeRask); train.setSmokes(trainRask); mirage.setSmokes(mirageRask);
             overpass.setSmokes(overpassRask); coble.setSmokes(cobleRask); dust2.setSmokes(dust2Rask);
-            clearLists(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask);
+            //clearLists(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask);
 
-            fillFlashBangs(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask, 15);
+            //fillFlashBangs(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask, 15);
             inferno.setFlashbangs(infernoRask); nuke.setFlashbangs(nukeRask); train.setFlashbangs(trainRask); mirage.setFlashbangs(mirageRask);
             overpass.setFlashbangs(overpassRask); coble.setFlashbangs(cobleRask); dust2.setFlashbangs(dust2Rask);
-            clearLists(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask);
+           // clearLists(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask);
 
-            fillMolotovs(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask, 15);
+           // fillMolotovs(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask, 15);
             inferno.setMolotovs(infernoRask); nuke.setMolotovs(nukeRask); train.setMolotovs(trainRask); mirage.setMolotovs(mirageRask);
             overpass.setMolotovs(overpassRask); coble.setMolotovs(cobleRask); dust2.setMolotovs(dust2Rask);
-            clearLists(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask);
+//            clearLists(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask);
 
             gameMapDao.insertOrReplaceInTx(gameDaoMapper.mapFrom(gameMapMapper.mapFrom(inferno)),
                     gameDaoMapper.mapFrom(gameMapMapper.mapFrom(nuke)),gameDaoMapper.mapFrom(gameMapMapper.mapFrom(train)),
@@ -93,13 +108,13 @@ public class SplashActivity extends BaseActivity {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                startPlaying();
-                while (true) {
-                    if (!mPlayer.isPlaying()) break;
-                }
-                stopPlaying();
+               // startPlaying();
+               // while (true) {
+               //     if (!mPlayer.isPlaying()) break;
+               // }
+               // stopPlaying();
                 start(MapActivity.class);
-                progressDialog.dismiss();
+              //  progressDialog.dismiss();
             }
         }, 1500);
     }

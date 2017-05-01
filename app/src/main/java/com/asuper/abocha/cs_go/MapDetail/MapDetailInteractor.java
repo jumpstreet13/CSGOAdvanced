@@ -9,6 +9,6 @@ import com.asuper.abocha.cs_go.Listeners;
 
 public interface MapDetailInteractor extends BaseInteractor {
 
-    void getTacticks(Long id, Listeners.onQueryTacticImagesListener listener);
-    void getMainImage(Long id, Listeners.onQueryTacticImagesListener listener);
+    void getTacticks(int id, Listeners.onQueryTacticImagesListener listener);
+    void getMainImage(int id, Listeners.onQueryTacticImagesListener listener);
 }

@@ -22,9 +22,9 @@ public class QueryManager {
         return mGameMapDao.loadAll();
     }
 
-    public GameDaoMap getMapById(Long id){
+    public GameDaoMap getMapById(int id){
         return mGameMapDao.queryBuilder()
-                .where(GameDaoMapDao.Properties.Id.eq(id))
+                .where(GameDaoMapDao.Properties.IdForSearch.eq(id))
                 .unique();
     }
 

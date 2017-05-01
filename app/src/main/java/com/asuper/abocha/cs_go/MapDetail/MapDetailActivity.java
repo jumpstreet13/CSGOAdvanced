@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Optional;
 
 public class MapDetailActivity extends BaseActivity implements MapDetailView, GalleryAdapter.GalleryClickListener {
 
@@ -40,30 +42,28 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
     @BindView(R.id.molotovs) StateImageView molotovs;
     // TODO: 13.04.17 Add scrollView to layout for supporting small devices
 
-    @OnClick(R.id.fab_in_activity_map)
-    void onFabClick() {
-        start(VoiceRecordActivity.class);
-    }
 
     @OnClick(R.id.smokes)
     void onSmokeClick() {
         if (smokes.isStateTurnOn()) {
-            recyclerViewSmokes.setAdapter(null);
-            //smokes.setStateTurnOn(true, R.drawable);
+            recyclerViewSmokes.setVisibility(View.GONE);
+            smokes.setStateTurnOn(false, R.drawable.ic_arrow_forward_black_24dp);
         } else {
+            smokes.setStateTurnOn(true, R.drawable.ic_autorenew_black_24dp);
             presenter.getTacticks(transition.getLastTransition(), Tacticks.SMOKES);
-            //smokes.setStateTurnOn(true, R.drawable);
+            recyclerViewSmokes.setVisibility(View.VISIBLE);
         }
     }
 
     @OnClick(R.id.flashbangs)
     void onFlashClick() {
         if (flash.isStateTurnOn()) {
-            recyclerViewFlashBangs.setAdapter(null);
-            //flashbangs.setStateTurnOn(true, R.drawable);
+            recyclerViewFlashBangs.setVisibility(View.GONE);
+            flash.setStateTurnOn(false, R.drawable.ic_arrow_forward_black_24dp);
         } else {
+            flash.setStateTurnOn(true, R.drawable.ic_autorenew_black_24dp);
             presenter.getTacticks(transition.getLastTransition(), Tacticks.FLASHBANGS);
-            //flashbangs.setStateTurnOn(true, R.drawable);
+            recyclerViewFlashBangs.setVisibility(View.VISIBLE);
         }
 
     }
@@ -71,15 +71,17 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
     @OnClick(R.id.molotovs)
     void onMolotovClick() {
         if (molotovs.isStateTurnOn()) {
-            recyclerViewMolotovs.setAdapter(null);
-            //molotovs.setStateTurnOn(true, R.drawable);
+            recyclerViewMolotovs.setVisibility(View.GONE);
+            molotovs.setStateTurnOn(false, R.drawable.ic_arrow_forward_black_24dp);
         } else {
+            molotovs.setStateTurnOn(true, R.drawable.ic_autorenew_black_24dp);
             presenter.getTacticks(transition.getLastTransition(), Tacticks.MOLOTOVS);
-            //molotovs.setStateTurnOn(true, R.drawable);
+            recyclerViewMolotovs.setVisibility(View.VISIBLE);
         }
     }
 
 
+    @Optional
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class GameDtoMap {
 
-    private Long id;
+    private int idForSearch;
     private String shortDescription;
     private String longDescription;
     private int image;
@@ -20,9 +20,9 @@ public class GameDtoMap {
     public GameDtoMap() {
     }
 
-    public GameDtoMap(Long id,String shortDescription, String longDescription, int image, List<Integer> smokes,
+    public GameDtoMap(int id,String shortDescription, String longDescription, int image, List<Integer> smokes,
                       List<Integer> flashbangs, List<Integer>molotovs) {
-        this.id = id;
+        this.idForSearch = id;
         this.shortDescription = shortDescription;
         this.longDescription = longDescription;
         this.image = image;
@@ -80,11 +80,11 @@ public class GameDtoMap {
         this.molotovs = molotovs;
     }
 
-    public Long getId() {
-        return id;
+    public int getIdForSearch() {
+        return idForSearch;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdForSearch(int idForSearch) {
+        this.idForSearch = idForSearch;
     }
 }
