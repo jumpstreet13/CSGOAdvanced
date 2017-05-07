@@ -61,12 +61,12 @@ public class SplashActivity extends BaseActivity {
             startWithDelay();
         } else {
             GameMap inferno = new GameMap("Inferno", "this is mGameMap", R.drawable.de_inferno);
-            GameMap nuke = new GameMap( "Nuke", "this is mGameMap", R.drawable.de_inferno);
-            GameMap train = new GameMap("Train", "this is mGameMap", R.drawable.de_inferno);
-            GameMap mirage = new GameMap("Mirage", "this is mGameMap", R.drawable.de_inferno); // TODO: 01/05/17 Delete these casts
-            GameMap overpass = new GameMap("Overpass", "this is mGameMap", R.drawable.de_inferno);
-            GameMap coble = new GameMap("Coble", "this is mGameMap", R.drawable.de_inferno);
-            GameMap dust2 = new GameMap("Dust2", "this is mGameMap", R.drawable.de_inferno);
+            GameMap nuke = new GameMap( "Nuke", "this is mGameMap", R.drawable.de_nuke);
+            GameMap train = new GameMap("Train", "this is mGameMap", R.drawable.de_train);
+            GameMap mirage = new GameMap("Mirage", "this is mGameMap", R.drawable.de_mirage); // TODO: 01/05/17 Delete these casts
+            GameMap overpass = new GameMap("Overpass", "this is mGameMap", R.drawable.de_overpass);
+            GameMap coble = new GameMap("Coble", "this is mGameMap", R.drawable.de_cbble);
+            GameMap dust2 = new GameMap("Dust2", "this is mGameMap", R.drawable.de_dust2);
             inferno.setIdForSearch(0);
             nuke.setIdForSearch(1);
             train.setIdForSearch(2);

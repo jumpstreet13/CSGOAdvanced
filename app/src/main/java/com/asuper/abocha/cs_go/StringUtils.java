@@ -23,7 +23,6 @@ public interface StringUtils {
     String COBLE_RASKID_FLASHBANGS = "coble_raskid_flashbangs";
     String TRAIN_RASKID_FLASHBANGS = "train_raskid_flashbangs";
 
-
     String INFERNO_RASKID_MOLOTOVS = "inferno_raskid_molotovs";
     String NUKE_RASKID_MOLOTOVS = "nuke_raskid_molotovs";
     String DUST2_RASKID_MOLOTOVS = "dust2_raskid_molotovs";
