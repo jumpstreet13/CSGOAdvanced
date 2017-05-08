@@ -27,7 +27,6 @@ public class SplashActivity extends BaseActivity {
     @Inject GameDaoMapDao gameMapDao;
     @Inject Mapper<GameDaoMap, GameDtoMap> gameDaoMapper;
     @Inject Mapper<GameDtoMap, GameMap> gameMapMapper;
-    @Inject ProgressDialog progressDialog;
     private List<Integer> infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask; // TODO: 17.04.17 Maybe bitmaps later
     private String mFileName = null;
     private MediaPlayer mPlayer = null;
@@ -55,7 +54,6 @@ public class SplashActivity extends BaseActivity {
         super.onStart();
         mFileName = getExternalCacheDir().getAbsolutePath();
         mFileName += StringUtils.FILE_WITH_HELLO;   // TODO: 13.04.17 Refactor this with Dagger
-//        progressDialog.show();
         App.get(this).getComponent().inject(this);
         if (gameMapDao.loadAll().size() > 0) {
             startWithDelay();
@@ -129,9 +127,8 @@ public class SplashActivity extends BaseActivity {
                 // }
                 // stopPlaying();
                 start(MapActivity.class);
-                //  progressDialog.dismiss();
             }
-        }, 1500);
+        }, 3500);
     }
 
     private void startPlaying() {
