@@ -3,9 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_splash"
+    style="@style/ProgressBarStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/ProgressBarStyle"
+    android:background="@color/greyTransparent"
     tools:context="com.asuper.abocha.cs_go.SplashActivity">
 
     <ProgressBar
