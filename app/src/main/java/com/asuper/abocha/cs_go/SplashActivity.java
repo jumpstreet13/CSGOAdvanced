@@ -41,13 +41,13 @@ public class SplashActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         injectComponent();
-        infernoRask = Arrays.asList(R.drawable.de_cache);
-        nukeRask = Arrays.asList(R.drawable.de_cache);
-        trainRask = Arrays.asList(R.drawable.de_cache);
-        mirageRask = Arrays.asList(R.drawable.de_cache);
-        overpassRask = Arrays.asList(R.drawable.de_cache);
-        cobleRask = Arrays.asList(R.drawable.de_cache);
-        dust2Rask = Arrays.asList(R.drawable.de_cache);
+        infernoRask = Arrays.asList(R.drawable.de_cache, R.drawable.de_cbble, R.drawable.de_dust2, R.drawable.de_inferno, R.drawable.de_mirage);
+        nukeRask = Arrays.asList(R.drawable.de_cache, R.drawable.de_cbble, R.drawable.de_dust2, R.drawable.de_inferno, R.drawable.de_mirage);
+        trainRask = Arrays.asList(R.drawable.de_cache, R.drawable.de_cbble, R.drawable.de_dust2, R.drawable.de_inferno, R.drawable.de_mirage);
+        mirageRask = Arrays.asList(R.drawable.de_cache, R.drawable.de_cbble, R.drawable.de_dust2, R.drawable.de_inferno, R.drawable.de_mirage);
+        overpassRask = Arrays.asList(R.drawable.de_cache, R.drawable.de_cbble, R.drawable.de_dust2, R.drawable.de_inferno, R.drawable.de_mirage);
+        cobleRask = Arrays.asList(R.drawable.de_cache, R.drawable.de_cbble, R.drawable.de_dust2, R.drawable.de_inferno, R.drawable.de_mirage);
+        dust2Rask = Arrays.asList(R.drawable.de_cache, R.drawable.de_cbble, R.drawable.de_dust2, R.drawable.de_inferno, R.drawable.de_mirage);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class SplashActivity extends BaseActivity {
             startWithDelay();
         } else {
             GameMap inferno = new GameMap("Inferno", "this is mGameMap", R.drawable.de_inferno);
-            GameMap nuke = new GameMap( "Nuke", "this is mGameMap", R.drawable.de_nuke);
+            GameMap nuke = new GameMap("Nuke", "this is mGameMap", R.drawable.de_nuke);
             GameMap train = new GameMap("Train", "this is mGameMap", R.drawable.de_train);
             GameMap mirage = new GameMap("Mirage", "this is mGameMap", R.drawable.de_mirage); // TODO: 01/05/17 Delete these casts
             GameMap overpass = new GameMap("Overpass", "this is mGameMap", R.drawable.de_overpass);
@@ -74,25 +74,40 @@ public class SplashActivity extends BaseActivity {
             overpass.setIdForSearch(4);
             coble.setIdForSearch(5);
             dust2.setIdForSearch(6);
-          //  fillSmokes(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask, 15);
-            inferno.setSmokes(infernoRask); nuke.setSmokes(nukeRask); train.setSmokes(trainRask); mirage.setSmokes(mirageRask);
-            overpass.setSmokes(overpassRask); coble.setSmokes(cobleRask); dust2.setSmokes(dust2Rask);
+            //  fillSmokes(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask, 15);
+            inferno.setSmokes(infernoRask);
+            nuke.setSmokes(nukeRask);
+            train.setSmokes(trainRask);
+            mirage.setSmokes(mirageRask);
+            overpass.setSmokes(overpassRask);
+            coble.setSmokes(cobleRask);
+            dust2.setSmokes(dust2Rask);
             //clearLists(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask);
 
             //fillFlashBangs(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask, 15);
-            inferno.setFlashbangs(infernoRask); nuke.setFlashbangs(nukeRask); train.setFlashbangs(trainRask); mirage.setFlashbangs(mirageRask);
-            overpass.setFlashbangs(overpassRask); coble.setFlashbangs(cobleRask); dust2.setFlashbangs(dust2Rask);
-           // clearLists(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask);
+            inferno.setFlashbangs(infernoRask);
+            nuke.setFlashbangs(nukeRask);
+            train.setFlashbangs(trainRask);
+            mirage.setFlashbangs(mirageRask);
+            overpass.setFlashbangs(overpassRask);
+            coble.setFlashbangs(cobleRask);
+            dust2.setFlashbangs(dust2Rask);
+            // clearLists(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask);
 
-           // fillMolotovs(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask, 15);
-            inferno.setMolotovs(infernoRask); nuke.setMolotovs(nukeRask); train.setMolotovs(trainRask); mirage.setMolotovs(mirageRask);
-            overpass.setMolotovs(overpassRask); coble.setMolotovs(cobleRask); dust2.setMolotovs(dust2Rask);
+            // fillMolotovs(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask, 15);
+            inferno.setMolotovs(infernoRask);
+            nuke.setMolotovs(nukeRask);
+            train.setMolotovs(trainRask);
+            mirage.setMolotovs(mirageRask);
+            overpass.setMolotovs(overpassRask);
+            coble.setMolotovs(cobleRask);
+            dust2.setMolotovs(dust2Rask);
 //            clearLists(infernoRask, nukeRask, trainRask, mirageRask, overpassRask, cobleRask, dust2Rask);
 
             gameMapDao.insertOrReplaceInTx(gameDaoMapper.mapFrom(gameMapMapper.mapFrom(inferno)),
-                    gameDaoMapper.mapFrom(gameMapMapper.mapFrom(nuke)),gameDaoMapper.mapFrom(gameMapMapper.mapFrom(train)),
-                    gameDaoMapper.mapFrom(gameMapMapper.mapFrom(mirage)),gameDaoMapper.mapFrom(gameMapMapper.mapFrom(overpass)),
-                    gameDaoMapper.mapFrom(gameMapMapper.mapFrom(coble)),gameDaoMapper.mapFrom(gameMapMapper.mapFrom(dust2)));
+                    gameDaoMapper.mapFrom(gameMapMapper.mapFrom(nuke)), gameDaoMapper.mapFrom(gameMapMapper.mapFrom(train)),
+                    gameDaoMapper.mapFrom(gameMapMapper.mapFrom(mirage)), gameDaoMapper.mapFrom(gameMapMapper.mapFrom(overpass)),
+                    gameDaoMapper.mapFrom(gameMapMapper.mapFrom(coble)), gameDaoMapper.mapFrom(gameMapMapper.mapFrom(dust2)));
             startWithDelay();
         }
     }
@@ -108,13 +123,13 @@ public class SplashActivity extends BaseActivity {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-               // startPlaying();
-               // while (true) {
-               //     if (!mPlayer.isPlaying()) break;
-               // }
-               // stopPlaying();
+                // startPlaying();
+                // while (true) {
+                //     if (!mPlayer.isPlaying()) break;
+                // }
+                // stopPlaying();
                 start(MapActivity.class);
-              //  progressDialog.dismiss();
+                //  progressDialog.dismiss();
             }
         }, 1500);
     }
@@ -139,74 +154,77 @@ public class SplashActivity extends BaseActivity {
 
     private void clearLists(List<Integer> inferno, List<Integer> nuke, List<Integer> train,
                             List<Integer> mirage, List<Integer> overpass, List<Integer> coble,
-                            List<Integer> dust2){
-        inferno.clear(); nuke.clear(); train.clear(); mirage.clear(); overpass.clear(); coble.clear();
+                            List<Integer> dust2) {
+        inferno.clear();
+        nuke.clear();
+        train.clear();
+        mirage.clear();
+        overpass.clear();
+        coble.clear();
         dust2.clear();
     }
-
-
 
 
     private void fillSmokes(List<Integer> inferno, List<Integer> nuke, List<Integer> train,
                             List<Integer> mirage, List<Integer> overpass, List<Integer> coble,
                             List<Integer> dust2, int num) {
         for (int i = 0; i < num; i++) {
-            if(getResources().getIdentifier(StringUtils.INFERNO_RASKID_SMOKES + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.INFERNO_RASKID_SMOKES + i, "drawable", getPackageName()) != 0)
                 inferno.add(getResources().getIdentifier(StringUtils.INFERNO_RASKID_SMOKES + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.NUKE_RASKID_SMOKES + i, "drawable", getPackageName()) != 0)
+            if (getResources().getIdentifier(StringUtils.NUKE_RASKID_SMOKES + i, "drawable", getPackageName()) != 0)
                 nuke.add(getResources().getIdentifier(StringUtils.NUKE_RASKID_SMOKES + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.TRAIN_RASKID_SMOKES + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.TRAIN_RASKID_SMOKES + i, "drawable", getPackageName()) != 0)
                 train.add(getResources().getIdentifier(StringUtils.TRAIN_RASKID_SMOKES + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.MIRAGE_RASKID_SMOKES + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.MIRAGE_RASKID_SMOKES + i, "drawable", getPackageName()) != 0)
                 mirage.add(getResources().getIdentifier(StringUtils.MIRAGE_RASKID_SMOKES + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.OVERPASS_RASKID_SMOKES + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.OVERPASS_RASKID_SMOKES + i, "drawable", getPackageName()) != 0)
                 overpass.add(getResources().getIdentifier(StringUtils.OVERPASS_RASKID_SMOKES + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.COBLE_RASKID_SMOKES + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.COBLE_RASKID_SMOKES + i, "drawable", getPackageName()) != 0)
                 coble.add(getResources().getIdentifier(StringUtils.COBLE_RASKID_SMOKES + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.DUST2_RASKID_SMOKES + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.DUST2_RASKID_SMOKES + i, "drawable", getPackageName()) != 0)
                 dust2.add(getResources().getIdentifier(StringUtils.DUST2_RASKID_SMOKES + i, "drawable", getPackageName()));
         }
     }
 
 
     private void fillFlashBangs(List<Integer> inferno, List<Integer> nuke, List<Integer> train,
-                            List<Integer> mirage, List<Integer> overpass, List<Integer> coble,
-                            List<Integer> dust2, int num) {
+                                List<Integer> mirage, List<Integer> overpass, List<Integer> coble,
+                                List<Integer> dust2, int num) {
         for (int i = 0; i < num; i++) {
-            if(getResources().getIdentifier(StringUtils.INFERNO_RASKID_FLASHBANGS + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.INFERNO_RASKID_FLASHBANGS + i, "drawable", getPackageName()) != 0)
                 inferno.add(getResources().getIdentifier(StringUtils.INFERNO_RASKID_FLASHBANGS + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.NUKE_RASKID_FLASHBANGS + i, "drawable", getPackageName()) != 0)
-                nuke.add(getResources().getIdentifier(StringUtils.NUKE_RASKID_FLASHBANGS+ i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.TRAIN_RASKID_FLASHBANGS + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.NUKE_RASKID_FLASHBANGS + i, "drawable", getPackageName()) != 0)
+                nuke.add(getResources().getIdentifier(StringUtils.NUKE_RASKID_FLASHBANGS + i, "drawable", getPackageName()));
+            if (getResources().getIdentifier(StringUtils.TRAIN_RASKID_FLASHBANGS + i, "drawable", getPackageName()) != 0)
                 train.add(getResources().getIdentifier(StringUtils.TRAIN_RASKID_FLASHBANGS + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.MIRAGE_RASKID_FLASHBANGS + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.MIRAGE_RASKID_FLASHBANGS + i, "drawable", getPackageName()) != 0)
                 mirage.add(getResources().getIdentifier(StringUtils.MIRAGE_RASKID_FLASHBANGS + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.OVERPASS_RASKID_FLASHBANGS + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.OVERPASS_RASKID_FLASHBANGS + i, "drawable", getPackageName()) != 0)
                 overpass.add(getResources().getIdentifier(StringUtils.OVERPASS_RASKID_FLASHBANGS + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.COBLE_RASKID_FLASHBANGS + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.COBLE_RASKID_FLASHBANGS + i, "drawable", getPackageName()) != 0)
                 coble.add(getResources().getIdentifier(StringUtils.COBLE_RASKID_FLASHBANGS + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.DUST2_RASKID_FLASHBANGS + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.DUST2_RASKID_FLASHBANGS + i, "drawable", getPackageName()) != 0)
                 dust2.add(getResources().getIdentifier(StringUtils.DUST2_RASKID_FLASHBANGS + i, "drawable", getPackageName()));
         }
     }
 
     private void fillMolotovs(List<Integer> inferno, List<Integer> nuke, List<Integer> train,
-                                List<Integer> mirage, List<Integer> overpass, List<Integer> coble,
-                                List<Integer> dust2, int num) {
+                              List<Integer> mirage, List<Integer> overpass, List<Integer> coble,
+                              List<Integer> dust2, int num) {
         for (int i = 0; i < num; i++) {
-            if(getResources().getIdentifier(StringUtils.INFERNO_RASKID_MOLOTOVS + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.INFERNO_RASKID_MOLOTOVS + i, "drawable", getPackageName()) != 0)
                 inferno.add(getResources().getIdentifier(StringUtils.INFERNO_RASKID_MOLOTOVS + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.NUKE_RASKID_MOLOTOVS + i, "drawable", getPackageName()) != 0)
-                nuke.add(getResources().getIdentifier(StringUtils.NUKE_RASKID_MOLOTOVS+ i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.TRAIN_RASKID_MOLOTOVS + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.NUKE_RASKID_MOLOTOVS + i, "drawable", getPackageName()) != 0)
+                nuke.add(getResources().getIdentifier(StringUtils.NUKE_RASKID_MOLOTOVS + i, "drawable", getPackageName()));
+            if (getResources().getIdentifier(StringUtils.TRAIN_RASKID_MOLOTOVS + i, "drawable", getPackageName()) != 0)
                 train.add(getResources().getIdentifier(StringUtils.TRAIN_RASKID_MOLOTOVS + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.MIRAGE_RASKID_MOLOTOVS + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.MIRAGE_RASKID_MOLOTOVS + i, "drawable", getPackageName()) != 0)
                 mirage.add(getResources().getIdentifier(StringUtils.MIRAGE_RASKID_MOLOTOVS + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.OVERPASS_RASKID_MOLOTOVS + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.OVERPASS_RASKID_MOLOTOVS + i, "drawable", getPackageName()) != 0)
                 overpass.add(getResources().getIdentifier(StringUtils.OVERPASS_RASKID_MOLOTOVS + i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.COBLE_RASKID_MOLOTOVS + i, "drawable", getPackageName())!=0)
-                coble.add(getResources().getIdentifier(StringUtils.COBLE_RASKID_MOLOTOVS+ i, "drawable", getPackageName()));
-            if(getResources().getIdentifier(StringUtils.DUST2_RASKID_MOLOTOVS + i, "drawable", getPackageName())!=0)
+            if (getResources().getIdentifier(StringUtils.COBLE_RASKID_MOLOTOVS + i, "drawable", getPackageName()) != 0)
+                coble.add(getResources().getIdentifier(StringUtils.COBLE_RASKID_MOLOTOVS + i, "drawable", getPackageName()));
+            if (getResources().getIdentifier(StringUtils.DUST2_RASKID_MOLOTOVS + i, "drawable", getPackageName()) != 0)
                 dust2.add(getResources().getIdentifier(StringUtils.DUST2_RASKID_MOLOTOVS + i, "drawable", getPackageName()));
         }
     }

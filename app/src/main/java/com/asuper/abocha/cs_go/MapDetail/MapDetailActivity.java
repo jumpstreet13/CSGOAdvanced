@@ -17,7 +17,6 @@ import com.asuper.abocha.cs_go.Managers.MyTransitionManager;
 import com.asuper.abocha.cs_go.R;
 import com.asuper.abocha.cs_go.StateImageView;
 import com.asuper.abocha.cs_go.Tacticks;
-import com.asuper.abocha.cs_go.VoiceRecordActivity;
 import com.bumptech.glide.Glide;
 
 import java.util.List;
@@ -40,6 +39,7 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
     @BindView(R.id.smokes) StateImageView smokes;
     @BindView(R.id.flashbangs) StateImageView flash;
     @BindView(R.id.molotovs) StateImageView molotovs;
+    private Animation animationRight, animationLeft;
     // TODO: 13.04.17 Add scrollView to layout for supporting small devices
 
 
@@ -47,9 +47,11 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
     void onSmokeClick() {
         if (smokes.isStateTurnOn()) {
             recyclerViewSmokes.setVisibility(View.GONE);
-            smokes.setStateTurnOn(false, R.drawable.ic_arrow_forward_black_24dp);
+            smokes.setStateTurnOn(false);
+            smokes.startAnimation(animationLeft);
         } else {
-            smokes.setStateTurnOn(true, R.drawable.ic_autorenew_black_24dp);
+            smokes.setStateTurnOn(true);
+            smokes.startAnimation(animationRight);
             presenter.getTacticks(transition.getLastTransition(), Tacticks.SMOKES);
             recyclerViewSmokes.setVisibility(View.VISIBLE);
         }
@@ -59,9 +61,11 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
     void onFlashClick() {
         if (flash.isStateTurnOn()) {
             recyclerViewFlashBangs.setVisibility(View.GONE);
-            flash.setStateTurnOn(false, R.drawable.ic_arrow_forward_black_24dp);
+            flash.setStateTurnOn(false);
+            flash.startAnimation(animationLeft);
         } else {
-            flash.setStateTurnOn(true, R.drawable.ic_autorenew_black_24dp);
+            flash.setStateTurnOn(true);
+            flash.startAnimation(animationRight);
             presenter.getTacticks(transition.getLastTransition(), Tacticks.FLASHBANGS);
             recyclerViewFlashBangs.setVisibility(View.VISIBLE);
         }
@@ -72,9 +76,11 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
     void onMolotovClick() {
         if (molotovs.isStateTurnOn()) {
             recyclerViewMolotovs.setVisibility(View.GONE);
-            molotovs.setStateTurnOn(false, R.drawable.ic_arrow_forward_black_24dp);
+            molotovs.setStateTurnOn(false);
+            molotovs.startAnimation(animationLeft);
         } else {
-            molotovs.setStateTurnOn(true, R.drawable.ic_autorenew_black_24dp);
+            molotovs.setStateTurnOn(true);
+            molotovs.startAnimation(animationRight);
             presenter.getTacticks(transition.getLastTransition(), Tacticks.MOLOTOVS);
             recyclerViewMolotovs.setVisibility(View.VISIBLE);
         }
@@ -90,6 +96,8 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
         injectComponent();
         presenter.attachView(this);
         presenter.getMainImage(transition.getLastTransition());
+        animationRight = AnimationUtils.loadAnimation(this, R.anim.rotate_to_the_right);
+        animationLeft = AnimationUtils.loadAnimation(this, R.anim.rotate_to_the_left);
     }
 
     @Override
@@ -98,19 +106,22 @@ public class MapDetailActivity extends BaseActivity implements MapDetailView, Ga
     }
 
     @Override
-    public void onGalleryItemClick(ImageView imageView, Tacticks tacticks) {
+    public void onGalleryItemClick(ImageView imageView, Tacticks tacticks, int itemPosition) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             startWithTransition(GalleryBigDetail.class, imageView, "fromDetailToBig", false); // TODO: 30.03.17 Make activity transition intent
         } else start(GalleryBigDetail.class);
         switch (tacticks) {
             case MOLOTOVS:
                 transition.setTrueOneAndSetFalseAnothers(Tacticks.MOLOTOVS);
+                transition.setItemPosition(itemPosition);
                 break;
             case FLASHBANGS:
                 transition.setTrueOneAndSetFalseAnothers(Tacticks.FLASHBANGS);
+                transition.setItemPosition(itemPosition);
                 break;
             case SMOKES:
                 transition.setTrueOneAndSetFalseAnothers(Tacticks.SMOKES);
+                transition.setItemPosition(itemPosition);
                 break;
         }
     }

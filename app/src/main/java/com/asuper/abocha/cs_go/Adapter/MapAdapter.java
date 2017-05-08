@@ -77,7 +77,7 @@ public class MapAdapter extends RecyclerView.Adapter<MapAdapter.MapHolder> {
             Glide.with(imageView.getContext())
                     .load(gameMap.getImage())
                     .centerCrop()
-                    .override(1200,800) // TODO: 29.03.17 Find optimal size
+                    .override(800,600) // TODO: 29.03.17 Find optimal size
                     .into(imageView);
             this.listener = listener;
         }

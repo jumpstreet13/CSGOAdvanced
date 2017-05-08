@@ -43,7 +43,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryH
     @Override
     public void onBindViewHolder(GalleryHolder holder, int position) {
         Integer nextImage = mapView.get(position);
-        holder.bindView(nextImage, listener, tacticks);
+        holder.bindView(nextImage, listener, tacticks, position);
     }
 
     @Override
@@ -52,28 +52,28 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryH
     }
 
     public interface GalleryClickListener {
-        void onGalleryItemClick(ImageView imageView, Tacticks tacticks);
+        void onGalleryItemClick(ImageView imageView, Tacticks tacticks, int itemPosition);
     }
 
 
     static class GalleryHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.imageview_in_card_gallery_list) ImageView imageView;
-        private Animation mAnimation;
         private GalleryClickListener listener;
         private Tacticks tacticks;
+        private int itemPosition;
 
         @OnClick(R.id.cardview_in_gallery_list)
         void onGalleryItemClick() {
             switch (tacticks) {
                 case MOLOTOVS:
-                    listener.onGalleryItemClick(imageView, Tacticks.MOLOTOVS);
+                    listener.onGalleryItemClick(imageView, Tacticks.MOLOTOVS, itemPosition);
                     break;
                 case FLASHBANGS:
-                    listener.onGalleryItemClick(imageView, Tacticks.FLASHBANGS);
+                    listener.onGalleryItemClick(imageView, Tacticks.FLASHBANGS, itemPosition);
                     break;
                 case SMOKES:
-                    listener.onGalleryItemClick(imageView, Tacticks.SMOKES);
+                    listener.onGalleryItemClick(imageView, Tacticks.SMOKES, itemPosition);
                     break;
             }
         }
@@ -83,14 +83,15 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryH
             ButterKnife.bind(this, itemView);
         }
 
-        void bindView(Integer nextImage, GalleryClickListener listener, Tacticks tacticks) {
+        void bindView(Integer nextImage, GalleryClickListener listener, Tacticks tacticks, int itemPosition) {
             Glide.with(imageView.getContext())
                     .load(nextImage)
                     .centerCrop()
-                    .override(800, 600)
+                    .override(600, 400)
                     .into(imageView);
             this.listener = listener;
             this.tacticks = tacticks;
+            this.itemPosition = itemPosition;
         }
     }
 

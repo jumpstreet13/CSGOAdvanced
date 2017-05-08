@@ -12,7 +12,16 @@ public class MyTransitionManager {
     private boolean smokes;
     private boolean flashbangs;
     private boolean molotovs;
+    private int itemPosition;
 
+
+    public int getItemPosition() {
+        return itemPosition;
+    }
+
+    public void setItemPosition(int itemPosition) {
+        this.itemPosition = itemPosition;
+    }
 
     public int getLastTransition() {
         return lastTransition;

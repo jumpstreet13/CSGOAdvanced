@@ -2,6 +2,7 @@ package com.asuper.abocha.cs_go.GalleryBigDetail;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,6 +30,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 import static com.asuper.abocha.cs_go.R.id.start;
+import static com.asuper.abocha.cs_go.R.id.transition_current_scene;
 
 public class GalleryBigDetail extends BaseActivity implements GalleryBigAdapter.GalleryBigClickListener {
 
@@ -41,7 +43,8 @@ public class GalleryBigDetail extends BaseActivity implements GalleryBigAdapter.
 
     @OnClick(R.id.activity_gallery_big_detail)
     void onClick() {
-        start(MapDetailActivity.class, true);
+        //start(MapDetailActivity.class, true);
+        super.onBackPressed();
     }
 
 
@@ -50,6 +53,7 @@ public class GalleryBigDetail extends BaseActivity implements GalleryBigAdapter.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallery_big_detail);
         ButterKnife.bind(this);
+        injectComponent();
         GalleryBigAdapter galleryAdapter = new GalleryBigAdapter(dataMapper.mapTo(mapper.mapTo(manager.getMapById(transition.getLastTransition()))).
                 getExactTactick(transition.getActualTactick()), this);
         // TODO: 13.04.17 Make this logic more clear!!
@@ -57,6 +61,18 @@ public class GalleryBigDetail extends BaseActivity implements GalleryBigAdapter.
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         mRecyclerView.setLayoutManager(linearLayoutManager);
         mRecyclerView.setAdapter(galleryAdapter);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mRecyclerView.smoothScrollToPosition(transition.getItemPosition());
+            }
+        },500);
     }
 
     @Override
@@ -67,6 +83,5 @@ public class GalleryBigDetail extends BaseActivity implements GalleryBigAdapter.
     @Override
     public void onGalleryItemClick(ImageView imageView) {
     }
-
 
 }

@@ -28,8 +28,7 @@ public class StateImageView extends ImageView {
         return stateTurnOn;
     }
 
-    public void setStateTurnOn(boolean stateTurnOn, int image) {
+    public void setStateTurnOn(boolean stateTurnOn) {
         this.stateTurnOn = stateTurnOn;
-        this.setImageResource(image);
     }
 }

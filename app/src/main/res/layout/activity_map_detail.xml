@@ -8,112 +8,123 @@
     android:layout_height="match_parent"
     tools:context="com.asuper.abocha.cs_go.Map.MapActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/app_bar_in_map_activity"
-        style="@style/AppBarDetail"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="wrap_content">
 
-        <android.support.design.widget.CollapsingToolbarLayout
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/app_bar_in_map_activity"
+            style="@style/AppBarDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            app:contentScrim="@color/colorPrimary"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:statusBarScrim="@android:color/holo_blue_dark">
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-            <ImageView
-                android:id="@+id/image_collapse"
+            <android.support.design.widget.CollapsingToolbarLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_of_collapsing_image"
+                android:layout_height="wrap_content"
                 android:fitsSystemWindows="true"
-                android:scaleType="centerCrop"
-                android:transitionName="mapImage"
-                app:layout_collapseMode="parallax"
-                tools:src="@drawable/de_cache"/>
+                app:contentScrim="@color/colorPrimary"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:statusBarScrim="@android:color/holo_blue_dark">
 
-            <android.support.v7.widget.Toolbar
-                android:id="@+id/toolbar_in_map_activity"
+                <ImageView
+                    android:id="@+id/image_collapse"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_of_collapsing_image"
+                    android:fitsSystemWindows="true"
+                    android:scaleType="centerCrop"
+                    android:transitionName="mapImage"
+                    app:layout_collapseMode="parallax"
+                    tools:src="@drawable/de_cache"/>
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar_in_map_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:theme="@style/AppTheme.PopupOverlay"
+                    app:layout_collapseMode="pin"
+                    app:popupTheme="@style/AppTheme.PopupOverlay">
+                </android.support.v7.widget.Toolbar>
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:theme="@style/AppTheme.PopupOverlay"
-                app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay">
-            </android.support.v7.widget.Toolbar>
-
-        </android.support.design.widget.CollapsingToolbarLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.asuper.abocha.cs_go.StateImageView
-                android:src="@drawable/ic_arrow_forward_black_24dp"
-                android:padding="@dimen/padding_between_cards"
-                android:id="@+id/smokes"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <com.asuper.abocha.cs_go.StateImageView
-                android:src="@drawable/ic_arrow_forward_black_24dp"
-                android:id="@+id/flashbangs"
-                android:layout_gravity="center"
-                android:padding="@dimen/padding_between_cards"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
 
-            <com.asuper.abocha.cs_go.StateImageView
-                android:src="@drawable/ic_arrow_forward_black_24dp"
-                android:id="@+id/molotovs"
-                android:padding="@dimen/padding_between_cards"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
 
-        </LinearLayout>
+                <com.asuper.abocha.cs_go.StateImageView
+                    android:id="@+id/smokes"
+                    android:layout_width="100dp"
+                    android:layout_height="70dp"
+                    android:padding="@dimen/padding_between_cards"
+                    android:src="@drawable/smoke"/>
 
+                <com.asuper.abocha.cs_go.StateImageView
+                    android:id="@+id/flashbangs"
+                    android:layout_width="100dp"
+                    android:layout_height="70dp"
+                    android:padding="@dimen/padding_between_cards"
+                    android:src="@drawable/fire"/>
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                <com.asuper.abocha.cs_go.StateImageView
+                    android:id="@+id/molotovs"
+                    android:layout_width="100dp"
+                    android:layout_height="70dp"
+                    android:padding="@dimen/padding_between_cards"
+                    android:src="@drawable/flash"/>
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView_withSmokes_in_activity_map_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            </android.support.v7.widget.RecyclerView>
-
-        </HorizontalScrollView>
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView_withFlashBangs_in_activity_map_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            </android.support.v7.widget.RecyclerView>
-
-        </HorizontalScrollView>
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerView_withMolotovs_in_activity_map_detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-            </android.support.v7.widget.RecyclerView>
-
-        </HorizontalScrollView>
+            </LinearLayout>
 
 
-    </android.support.design.widget.AppBarLayout>
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView_withSmokes_in_activity_map_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </android.support.v7.widget.RecyclerView>
+
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView_withFlashBangs_in_activity_map_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </android.support.v7.widget.RecyclerView>
+
+            </HorizontalScrollView>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_vertical_margin">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerView_withMolotovs_in_activity_map_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                </android.support.v7.widget.RecyclerView>
+
+            </HorizontalScrollView>
+
+
+        </android.support.design.widget.AppBarLayout>
+
+    </ScrollView>
 </android.support.design.widget.CoordinatorLayout>
